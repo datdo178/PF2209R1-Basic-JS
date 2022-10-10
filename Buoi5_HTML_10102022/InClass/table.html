@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid rgb(14, 122, 4);
+        }
+
+        tr:nth-child(odd) {
+            background-color: #dddddd;
+        }
+
+        li:nth-child(odd) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+    <table border="1" cellspacing="0" cellpadding="5">
+        <tr>
+            <th>#</th>
+            <th>Họ Tên</th>
+            <th>SĐT</th>
+        </tr>
+
+        <tr>
+            <td rowspan="2">1</td>
+            <td>Tên Bạn A</td>
+            <td>0123456789</td>
+        </tr>
+
+        <tr>
+            <td>Tên Bạn B</td>
+            <td>0123456789</td>
+        </tr>
+
+        <tr>
+            <td colspan="2" align="center">Tổng cộng</td>
+            <td style="text-align: right; color: darkgoldenrod">2</td>
+        </tr>
+    </table>
+    CSS inline style: viết css ngay tại thẻ mở của tag
+
+    <h1>THỬ TÔ MÀU CÁC HÀNG CỦA LIST</h1>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</body>
+
+</html>
