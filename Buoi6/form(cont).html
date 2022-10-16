@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>FORM</h2>
+    <form action="" method="POST">
+        <fieldset>
+            <legend>Personal Information</legend>
+            Name: <input placeholder="Input your name" name="fullName" value="David" /> <br>
+            Age: <input type="number" name="age" placeholder="Input your age" /> <br>
+            Phone: <input type="number" disabled /> <br>
+            Email: <input type="email" name="email" /> <br>
+            Password: <input type="password" name="email" /> <br>
+            Gender:
+            <input type="radio" name="gender" value="Male"> Male
+            <input type="radio" name="gender" value="Female"> Female
+            <br />
+            Hobbies:
+            <input type="checkbox" name="hobbies" value="Travel" />
+            <input type="checkbox" name="hobbies" value="Book" />
+            <input type="checkbox" name="hobbies" value="Movie" />
+        </fieldset>
+        <input type="submit" value="Registry" />
+        <input type="reset" value="Delete all" />
+    </form>
+
+    <div>
+        - action: nơi thông tin của form được gửi tới <br />
+        <br />
+        - method: phương thức gửi <br />
+        GET --> url sẽ hiển thị hết thông tin của các fields <br />
+        POST --> nên dùng, sẽ ko hiển thị như GET <br />
+        + Nếu trong form có input-file thì phải dùng POST và có enctype="multipart/form-data"<br />
+        <br />
+        - type: <br />
+        text (default)<br />
+        number <br />
+        email <br />
+        password <br />
+        email <br />
+        <br />
+        submit --> button <br />
+        reset --> button <br />
+        button --> tạo nút để click vào thì gọi thực thi JS <br />
+        <br />
+        radio --> các radio có cùng name thì user sẽ chỉ chọn được 1 (group nhóm radio) <br />
+        <br />
+        checkbox --> lúc nào cũng có thể chọn nhiều, nhưng group nhóm bằng name thì các value chung nhóm gửi lên server
+        chung 1 mảng <br />
+        <br />
+        <br />
+        file --> attachment
+        - value: <br />
+        hiển thị tên button <br />
+        set giá trị defautl cho các ô textbox <br />
+        hiển thị giá trị option của radio, checkbox <br />
+        <br />
+        - placeholder: dòng chữ giải thích trong textbox, biến mất khi người dùng nhập giá trị vào <br />
+
+
+        - Dùng thẻ select thay vì input-radio hay input-checkbox vì tiết kiệm diện tích. Hơn nữa select còn có thể chọn
+        một hoặc nhiều option<br />
+
+        - textarea --> rows: số hàng, cols: chiều rộng bao nhiêu ký tự
+
+    </div>
+
+    <form>
+        <h2>BUOI 6 - DEMO FORM</h2>
+        <input type="number" name="age" /><br />
+        <input type="submit" value="SEND" />
+        <input type="reset" value="RESET" />
+        <input type="button" onclick="alert('Xin chào các bạn')" value="CLICK ME!" />
+        <br />
+        <!--Dùng button sẽ nhận được kết quả tương tự-->
+        <button type="submit">SUBMIT BUTTON</button>
+        <button type="reset">RESET BUTTON</button>
+        <button type="button">CLICK ME!</button>
+    </form>
+
+</body>
+
+</html>

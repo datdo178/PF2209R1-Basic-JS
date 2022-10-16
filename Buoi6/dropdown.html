@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>
+        Dùng thẻ select thay vì input-radio hay input-checkbox vì tiết kiệm diện tích. Hơn nữa select còn có thể chọn
+        một hoặc nhiều option<br />
+
+        textarea --> rows: số hàng, cols: chiều rộng bao nhiêu ký tự
+    </p>
+
+    <form method="get">
+        Brand:
+        <select name="brand">
+            <option value="VV">Volvo</option>
+            <option value="BMW">BMW</option>
+            <option value="Honda">Honda</option>
+        </select><br />
+        Type:<br>
+        <select name="type" multiple>
+            <option value="forklore">Forklore</option>
+            <option value="pop">Pop</option>
+            <option value="rock">Rock</option>
+        </select> <br />
+        Aditional Info:<br>
+        <textarea name="aditional_info" rows="5" cols="100"></textarea><br />
+        <input type="file" name="attachment" value="attachment" />
+        <button type="submit">Registry</button>
+    </form>
+</body>
+
+</html>

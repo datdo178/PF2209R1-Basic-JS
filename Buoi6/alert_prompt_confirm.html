@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+<p>Nếu có điều kiện thì có thể sử dung sweetalert2:
+    https://sweetalert2.github.io/
+    để hiển thị thông báo</p>
+
+<script>
+    function askName() {
+        let name = prompt('Input your name:');
+        alert('Hello ' + name);
+    }
+
+    function confirmInfo() {
+        let answer = confirm('Do you understand the lesson?');
+        alert('You said: ' + answer)
+    }
+</script>
+
+<input type="button" value="Hello" onclick="alert('Hello everyone!')" />
+<input type="button" value="Name input" onclick="askName()" />
+<input type="button" value="Understand lesson?" onclick="confirmInfo()" />
+</body>
+
+</html>

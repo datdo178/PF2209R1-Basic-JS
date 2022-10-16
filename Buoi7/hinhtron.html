@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Nhập bán kính và tính đường kính, chu vi, diện tích</h1>
+    <script>
+        let banKinhNhap = prompt('Nhap ban kinh: ');
+        let banKinh = parseFloat(banKinhText);
+
+        const PI = 3.14;
+        let duongKinh = 2 * banKinh;
+        let chuVi = duongKinh * PI;
+        let dienTich = banKinh ** 2 * PI;
+        document.write(`Đường kính: ${duongKinh}<br/>`);
+        document.write(`Chu vi: ${chuVi}<br/>`);
+        document.write(`Diện tích: ${dienTich}<br/>`);
+    </script>
+</body>
+
+</html>
