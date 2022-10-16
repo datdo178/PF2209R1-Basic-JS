@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .label {
+            text-align: right;
+            vertical-align: top;
+            color: blue;
+        }
+
+        .label2 {
+            text-align: left;
+            vertical-align: top;
+            color: blue;
+        }
+
+        .hobbies {
+            color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="post" action="homework_form2.html" class="form1">
+        <fieldset>
+            <h2 style="background-color: red; color:aliceblue; text-align: center;">SỞ THÍCH CỦA BẠN</h2>
+            <table>
+                <tr>
+                    <td class="label">Họ và tên</td>
+                    <td><input type="text" name="fullname" value="" size="30" /></td>
+                </tr>
+
+                <tr>
+                    <td class="label">Email</td>
+                    <td><input type="email" name="email" value="" size="25" /></td>
+                </tr>
+
+                <tr>
+                    <td class="label">Sở thích</td>
+                    <td>
+                        <table class="hobbies">
+                            <tr>
+                                <td><input type="checkbox" name="hobbies" />Thể thao</td>
+                                <td><input type="checkbox" name="hobbies" />Âm nhạc</td>
+                                <td><input type="checkbox" name="hobbies" />Đọc sách</td>
+                            </tr>
+
+                            <tr>
+                                <td><input type="checkbox" name="hobbies" />Lướt web</td>
+                                <td><input type="checkbox" name="hobbies" />Chơi game</td>
+                                <td><input type="checkbox" name="hobbies" />Điện ảnh</td>
+                            </tr>
+
+                            <tr>
+                                <td><input type="checkbox" name="hobbies" /> lịch</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" name="btSubmit" value="Gửi thông tin" />
+                        <input type="reset" name="btReset" value="Nhập lại" />
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </form>
+
+    <hr>
+    <form action="post" action="homework_form2.html" class="form2" style="background-color: rgb(233, 233, 148);">
+        <fieldset>
+            <h2 style="background-color: rgb(151, 210, 219); color:blue; text-align: center;">ĐĂNG KÝ HỌC VIÊN</h2>
+            <table>
+                <tr>
+                    <td class="label2">Họ và tên</td>
+                    <td><input type="text" name="fullname" value="" size="35" /></td>
+                </tr>
+
+                <tr>
+                    <td class="label2">Ngày sinh</td>
+                    <td><input type="text" name="birthday" value="" size="20" /></td>
+                </tr>
+
+                <tr>
+                    <td class="label2">Giới tính</td>
+                    <td>
+                        <input type="radio" name="gender" value="male" /> Nam
+                        <input type="radio" name="gender" value="female" /> Nữ
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="label2">Địa chỉ</td>
+                    <td><textarea cols="22" rows="3"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="label2">Lớp</td>
+                    <td>
+                        <select name="class">
+                            <option value="">-- Chọn lớp --</option>
+                            <option value="FE">FE</option>
+                            <option value="BE">BE</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="label2">Email</td>
+                    <td><input type="email" name="email" value="" size="23" /></td>
+                </tr>
+
+                <tr>
+                    <td class="label2">Điện thoại</td>
+                    <td><input type="number" name="phonenumber" value="" size="23" /></td>
+                </tr>
+            </table>
+        </fieldset>
+    </form>
+</body>
+
+</html>
