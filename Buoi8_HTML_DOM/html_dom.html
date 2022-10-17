@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function sayHello() {
+            let txtFullname = document.getElementById('fullname');
+            // console.log(txtFullname);
+            // alert('Hello ' + txtFullname.value);
+            let chuoi = `<b>${txtFullname.value}</b>`;
+            document.getElementById("herName").innerHTML = chuoi;
+            document.getElementById("test").innerText = chuoi;
+        }
+    </script>
+
+    <div>
+        Input full name:
+        <input id="fullname" />
+        <button type="button" onclick="sayHello();">
+            Hello!
+        </button>
+    </div>
+
+    <div>
+        Hello there <span id="herName">*</span>
+    </div>
+
+    <div>
+        Hello there <span id="test">*</span>
+    </div>
+
+    <!-- 
+        - id:
+            + dùng được cho all tags
+            + phân biệt hoa thường
+            + giá trị duy nhất cho mỗi tag
+            + thuộc tính: .value
+     -->
+</body>
+
+</html>
