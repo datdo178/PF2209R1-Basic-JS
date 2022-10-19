@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2 onmouseover="suKienOver()" onmouseleave="suKienLeave()" style="background-color: aqua;">Demo su kien</h2>
+    <div id="ket_qua"></div>
+    <input id="nhap_lieu" onkeypress="xuLyThayDoi()" />
+    <script>
+        function xuLyThayDoi() {
+            document.getElementById("ket_qua").innerHTML = "Ban vua go: " + document.getElementById("nhap_lieu").value;
+        }
+
+        function suKienOver() {
+            document.getElementById("ket_qua").innerHTML = 'Ban dang re chuot len the h2';
+        }
+
+
+        function suKienLeave() {
+            document.getElementById("ket_qua").innerHTML = 'Ban dang re ra ngoai the h2';
+        }
+    </script>
+</body>
+
+</html>

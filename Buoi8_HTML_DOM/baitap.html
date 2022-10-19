@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body id="body">
+    <script>
+        function changeColor(id) {
+            let color = document.getElementById(id);
+
+            document.getElementById('body').style.backgroundColor = color.innerText;
+        }
+    </script>
+
+    <h4>có 3 button với nội dung: Blue, Red, Green. Bấm vào button nào thì đổi màu nền background color của trang web
+        (body)</h4>
+    <button type="button" id="btnBlue" onclick="changeColor(this.id)">Blue</button>
+    <button type="button" id="btnRed" onclick="changeColor(this.id)">Red</button>
+    <button type="button" id="btnGreen" onclick="changeColor(this.id)">Green</button>
+</body>
+
+<!-- 
+HTML/CSS màu:
+color: <giá_trị>
+bgcolor: <giá_trị>
+border-color: <giá_trị>
+
+Giá trị điền theo các cách:
+Cách 1/ tên tiếng anh, vd: red, green, blue, magenta,...
+Cách 2/ #rrggbb hoặc #rgb trong đó 0 <= r,g,b <= f (hệ thập lục phân - 16)
+VD: color: #f09d12
+Cách 3/ rgb(r,g,b) với 0 <= r,g,b <= 255
+VD: color: rgb(255,0,0)
+Cách 4/ rgba(r,g,b,a) với 0 <= r,g,b <= 255, 0 <= a <= 1 độ mờ
+ -->
+
+</html>

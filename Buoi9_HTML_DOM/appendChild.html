@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h4>Nhập vào số dòng, số cột. Xuất bảng</h4>
+
+    Nhập số dòng:
+    <input type="number" min="1" id="soDong" /><br>
+    Nhập số cột:
+    <input type="number" min="1" id="soCot" /><br>
+
+    <button type="button" onclick="them2Dong()">Thêm 2 dòng</button>
+    <button type="button" onclick="xoaTbody()">Xoá bảng</button>
+
+    <div id="ket_qua"></div>
+    <table id="bang" border="1" cellspacing="0" cellpadding="5">
+        <thread>
+            <tr>
+                <td>#</td>
+                <td>Họ tên</td>
+            </tr>
+        </thread>
+        <tbody id="noi_dung_bang">
+        </tbody>
+    </table>
+    <script>
+        function them2Dong() {
+            let dong = document.createElement("tr");
+            let o_1 = document.createElement("td");
+            let o_2 = document.createElement("td");
+            o_1.innerHTML = "Stt";
+            o_2.innerHTML = "Fullname";
+            dong.appendChild(o_1);
+            dong.appendChild(o_2);
+            document.getElementById("noi_dung_bang").appendChild(dong);
+        }
+
+        function xoaTbody() {
+            let tbodyTag = document.getElementById("noi_dung_bang");
+            tbodyTag.innerHTML = '';
+        }
+    </script>
+</body>
+
+</html>

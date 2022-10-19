@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <h1>Calculator</h1>
+        <input type="number" id="firstNum" placeholder="First number" />
+        <input type="number" id="secondNum" placeholder="Second number" />
+        <br>
+        <br>
+        <button type="button" onclick="calculate('+')">Addition(+)</button>
+        <button type="button" onclick="calculate('-')">Substraction(-)</button>
+        <button type="button" onclick="calculate('x')">Multiplication(x)</button>
+        <button type="button" onclick="calculate('/')">Division(/)</button>
+        <br>
+        <br>
+        <div id="ketQua"></div>
+        <script>
+            function calculate(operator) {
+                const firstNum = document.getElementById("firstNum").value;
+                const secondNum = document.getElementById("secondNum").value;
+                let result;
+
+                switch (operator) {
+                    case "+":
+                        result = firstNum + secondNum;
+                        break;
+
+                    case "-":
+                        result = firstNum - secondNum;
+                        break;
+
+                    case "x":
+                        result = firstNum - secondNum;
+                        break;
+
+                    case "/":
+                        result = firstNum - secondNum;
+                        break;
+                }
+
+                document.getElementById("ketQua").innerHTML = `Kết quả (${operator}): ${result}`;
+            }
+        </script>
+    </form>
+</body>
+
+</html>
