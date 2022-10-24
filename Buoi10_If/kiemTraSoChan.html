@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3 style="color: darkgoldenrod; width: 400;">Kiểm tra chẵn lẻ</h3>
+
+    <input type="number" id="soNhap" />
+    <button type="button" onclick="kiemTra()">Kiểm tra</button>
+    <div id="ketQua"></div>
+
+    <script>
+        function kiemTra() {
+            let soNhap = document.getElementById("soNhap").value;
+
+            if (soNhap === "" || isNaN(soNhap)) {
+                document.getElementById("ketQua").innerHTML = 'Số nhập không hợp lệ';
+            } else {
+                if (soNhap % 2 === 0) {
+                    document.getElementById("ketQua").innerHTML = `${soNhap} là số chẵn`;
+                } else {
+                    document.getElementById("ketQua").innerHTML = `${soNhap} là số lẻ`;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

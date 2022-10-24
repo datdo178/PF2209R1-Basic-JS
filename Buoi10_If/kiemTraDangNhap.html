@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        if Admin => yêu cầu nhập pass
+            if pass === TheMaster => in welcome
+            if pass === null => in Canceled
+            else lại in wrong pass
+        if null => in chuỗi
+        else in "I don't know you"
+
+        Note: === null khi bấm cancel trên prompt
+     -->
+
+    <script>
+        let ten = prompt('Nhập tên:');
+        if (ten === 'Admin') {
+            let matKhau = prompt("Nhập mật khẩu:");
+
+            if (matKhau === 'TheMaster') {
+                alert('Welcome')
+            } else if (matKhau === null) {
+                alert('Cancelted')
+            } else {
+                alert('Wrong password')
+            }
+        } else if (ten === null) {
+            alert("Canceled");
+        } else {
+            alert("I don't know");
+        }
+
+    </script>
+</body>
+
+</html>

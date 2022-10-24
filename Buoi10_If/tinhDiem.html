@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <table>
+            <tr>
+                <td>Môn Toán</td>
+                <td>
+                    <input type="number" id="toan" min="0" max="10" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>Môn Văn</td>
+                <td>
+                    <input type="number" id="van" min="0" max="10" />
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>Môn Anh</td>
+                <td>
+                    <input type="number" id="anh" min="0" max="10" />
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>Khu vực</td>
+                <td>
+                    <select id="khuVuc">
+                        <option value="0.75">KV1</option>
+                        <option value="0.5">KV2-NT</option>
+                        <option value="0.25">KV2</option>
+                        <option value="0">KV3</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    <button type="butotn" onclick="tinhDiem()"> Tính điểm</button>
+                </td>
+            </tr>
+
+            <div id="ketQua"></div>
+        </table>
+    </form>
+
+    <script>
+        function tinhDiem() {
+            let toan = parseFloat(document.getElementById('toan').value);
+            let van = parseFloat(document.getElementById('van').value);
+            let anh = parseFloat(document.getElementById('anh').value);
+            let khuVuc = parseFloat(document.getElementById('khuVuc').value);
+            let tongDiem = toan + van + anh + khuVuc;
+
+            document.getElementById('ketQua').innerHTML = `Tổng điểm đại học của bạn là ${tongDiem}`;
+        }
+    </script>
+</body>
+
+</html>
