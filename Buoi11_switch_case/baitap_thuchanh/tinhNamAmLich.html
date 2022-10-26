@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính Âm Lịch</title>
+</head>
+
+<body>
+    Nhập năm dương lịch:
+    <input type="number" id="namDuong" /><br>
+    <button type="button" onclick="tinhToan()">Tính</button><br>
+    <div id="ketQua"></div>
+
+    <script>
+        function tinhToan() {
+            let namDuong = document.getElementById("namDuong").value;
+            let can, chi;
+
+            switch (namDuong % 10) {
+                case 0:
+                    can = "Canh";
+                    break;
+                case 1:
+                    can = "Tân";
+                    break;
+                case 2:
+                    can = "Nhâm";
+                    break;
+                case 3:
+                    can = "Quý";
+                    break;
+                case 4:
+                    can = "Giáp";
+                    break;
+                case 5:
+                    can = "Ất";
+                    break;
+                case 6:
+                    can = "Bính";
+                    break;
+                case 7:
+                    can = "Đinh";
+                    break;
+                case 8:
+                    can = "Mậu";
+                    break;
+                case 9:
+                    can = "Kỷ";
+                    break;
+            }
+
+            switch (namDuong % 12) {
+                case 0:
+                    chi = "Thân";
+                    break;
+                case 1:
+                    chi = "Dậu";
+                    break;
+                case 2:
+                    chi = "Tuất";
+                    break;
+                case 3:
+                    chi = "Hợi";
+                    break;
+                case 4:
+                    chi = "Tý";
+                    break;
+                case 5:
+                    chi = "Sửu";
+                    break;
+                case 6:
+                    chi = "Thìn";
+                    break;
+                case 7:
+                    chi = "Tỵ";
+                    break;
+                case 8:
+                    chi = "Ngọ";
+                    break;
+                case 9:
+                    chi = "Mùi";
+                    break;
+                case 10:
+                    chi = "Thân";
+                    break;
+                case 11:
+                    chi = "Dậu";
+                    break;
+            }
+
+            document.getElementById("ketQua").innerHTML = `${namDuong}: ${can} ${chi}`;
+        }
+    </script>
+
+</body>
+
+</html>
