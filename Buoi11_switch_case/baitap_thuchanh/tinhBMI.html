@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính BMI</title>
+</head>
+
+<body>
+    Chiều cao (m):
+    <input type="number" id="chieuCao" /><br>
+    Cân nặng (kg):
+    <input type="number" id="canNang" /><br>
+    <button type="button" onclick="tinhToan()">Tính BMI</button><br>
+    * Kết quả:
+    <div id="ketQua" style="color:brown"></div>
+
+    <script>
+        function tinhToan() {
+            let chieuCao = document.getElementById("chieuCao").value;
+            let canNang = document.getElementById("canNang").value;
+            let bmi = canNang / (chieuCao * chieuCao);
+            let ketQua;
+
+            if (bmi < 16) {
+                ketQua = 'Gầy độ III';
+            } else if (bmi < 17) {
+                ketQua = 'Gầy độ II';
+            } else if (bmi < 18.5) {
+                ketQua = 'Gầy độ I';
+            } else if (bmi < 25) {
+                ketQua = 'Bình thường';
+            } else if (bmi < 30) {
+                ketQua = 'Thừa cân';
+            } else if (bmi < 35) {
+                ketQua = 'Béo phì độ I';
+            } else if (bmi < 40) {
+                ketQua = 'Béo phì độ II';
+            } else {
+                ketQua = 'Béo phì độ III';
+            }
+
+            document.getElementById("ketQua").innerHTML = `BMI = ${bmi} - ${ketQua}`;
+        }
+    </script>
+</body>
+
+</html>
