@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            color: white;
+            background-color: rgb(170, 125, 212);
+            border: 0px;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <form class="form-inline" action="/action_page.php">
+        <table style="width: 700px; text-align: left;">
+            <tr>
+                <th>
+                    <label>Amount</label><br>
+                    <input type="number" id="amount" value="1">
+                </th>
+                <th>
+                    <label>From Currency</label><br>
+                    <select id="fromCurrency" style="width: 120px;">
+                        <option value="VND" selected>Việt Nam</option>
+                        <option value="USD">USD</option>
+                    </select>
+                </th>
+                <th>
+                    <label>To Currency</label><br>
+                    <select id="toCurrency" style="width: 120px;">
+                        <option value="VND">Việt Nam</option>
+                        <option value="USD" selected>USD</option>
+                    </select>
+                </th>
+                <th>
+                    <label></label><br>
+                    <button type="button" onclick="tinhToan()">Convert</button>
+                </th>
+            </tr>
+        </table>
+    </form>
+    <div id="result" style="color: blue"></div>
+
+    <script>
+        function tinhToan() {
+            let amount = document.getElementById("amount").value;
+            let fromCurrency = document.getElementById("fromCurrency").value;
+            let toCurrency = document.getElementById("toCurrency").value;
+            let vndToUsdRate = 24800;
+            let result;
+
+            if (fromCurrency === toCurrency) {
+                result = amount;
+            } else if (fromCurrency === "VND" && toCurrency === "USD") {
+                result = amount / vndToUsdRate;
+            } else if (fromCurrency === "USD" && toCurrency === "VND") {
+                result = amount * vndToUsdRate;
+            }
+
+            document.getElementById("result").innerHTML = `Exchange Ratio: 1 USD = ${vndToUsdRate} VND<br>Result: ${result}`;
+        }
+    </script>
+</body>
+
+</html>
