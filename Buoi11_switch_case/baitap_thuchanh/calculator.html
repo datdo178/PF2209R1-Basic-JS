@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        button {
+            width: 50px;
+            height: 50px;
+            margin: 5px 2px;
+        }
+
+        input {
+            width: 254px;
+            height: 25px;
+            margin: 8px;
+            text-align: right;
+            color: blue;
+        }
+
+        button {
+            background-color: white;
+            color: blue;
+            margin: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="width: 280px; height: 320px; border: 3px solid black">
+        <input id="manHinh" readonly size="32" /><br>
+        <button type="button" id="1" onclick="xuLySo(this.id)">1</button>
+        <button type="button" id="2" onclick="xuLySo(this.id)">2</button>
+        <button type="button" id="3" onclick="xuLySo(this.id)">3</button>
+        <button type="button" id="+" onclick="xuLyPhepToan(this.id)">+</button><br>
+        <button type="button" id="4" onclick="xuLySo(this.id)">4</button>
+        <button type="button" id="5" onclick="xuLySo(this.id)">5</button>
+        <button type="button" id="6" onclick="xuLySo(this.id)">6</button>
+        <button type="button" id="-" onclick="xuLyPhepToan(this.id)">-</button><br>
+        <button type="button" id="7" onclick="xuLySo(this.id)">7</button>
+        <button type="button" id="8" onclick="xuLySo(this.id)">8</button>
+        <button type="button" id="9" onclick="xuLySo(this.id)">9</button>
+        <button type="button" id="x" onclick="xuLyPhepToan(this.id)">x</button><br>
+        <button type="button" id="C" onclick="xuLyXoa()">C</button>
+        <button type="button" id="0" onclick="xuLySo(this.id)">0</button>
+        <button type="button" id="=" onclick="xuLyBang()">=</button>
+        <button type="button" id="/" onclick="xuLyPhepToan(this.id)">/</button>
+    </div>
+
+    <script>
+        var soHang01 = 0;
+        var soHang02 = 0;
+        var phepToan = 0;
+
+        function xuLySo(so) {
+            document.getElementById("manHinh").value += so;
+        }
+
+        function xuLyPhepToan(phepTinh) {
+            soHang01 = parseInt(document.getElementById("manHinh").value);
+            phepToan = phepTinh;
+            document.getElementById("manHinh").value = '';
+        }
+
+        function xuLyXoa() {
+            soHang01 = "";
+            soHang02 = "";
+            phepToan = "";
+            document.getElementById("manHinh").value = "";
+        }
+
+        function xuLyBang() {
+            soHang02 = parseInt(document.getElementById("manHinh").value);
+            let ketQua = 0;
+
+            // switch (phepToan) {
+            //     case '+':
+            //         ketQua = soHang01 + soHang02;
+            //         break;
+            //     case '-':
+            //         ketQua = soHang01 - soHang02;
+            //         break;
+            //     case 'x':
+            //         ketQua = soHang01 * soHang02;
+            //         break;
+            //     case '/':
+            //         ketQua = soHang01 / soHang02;
+            //         break;
+            // }
+
+            if (phepToan === '+') {
+                ketQua = soHang01 + soHang02;
+            } else if (phepToan === '-') {
+                ketQua = soHang01 - soHang02;
+            } else if (phepToan === 'x') {
+                ketQua = soHang01 * soHang02;
+            } else if (phepToan === '/') {
+                ketQua = soHang01 / soHang02;
+            }
+
+            document.getElementById("manHinh").value = ketQua;
+        }
+    </script>
+</body>
+
+</html>
