@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ve Tam Giac</title>
+</head>
+
+<body>
+    Nhập kích thước:
+    <input type="number" id="kichThuoc" />
+    <button type="button" onclick="veHinh()">Vẽ</button>
+    <br>
+    <div id="hinh1"></div>
+    <br><br>
+    <div id="hinh2"></div>
+    <br><br>
+    <div id="hinh3"></div>
+    <br><br>
+    <div id="hinh4"></div>
+    <script>
+        function veHinh() {
+            let kichThuoc = document.getElementById("kichThuoc").value;
+
+            // Hinh 1
+            let ketQua = '';
+            for (i = 1; i <= kichThuoc; i++) {
+                for (j = 1; j <= kichThuoc; j++) {
+                    ketQua = j <= i ? ketQua + '*' : ketQua;
+                }
+                ketQua += '<br>';
+            }
+            document.getElementById("hinh1").innerHTML = ketQua;
+
+            // Hinh 2
+            ketQua = '';
+            for (i = 1; i <= kichThuoc; i++) {
+                for (j = kichThuoc; j > 0; j--) {
+                    ketQua = j >= i ? ketQua + '*' : ketQua;
+                }
+                ketQua += '<br>';
+            }
+            document.getElementById("hinh2").innerHTML = ketQua;
+
+            // Hinh 3
+            ketQua = '';
+            for (i = 1; i <= kichThuoc; i++) {
+                for (j = kichThuoc; j > 0; j--) {
+                    ketQua = j <= i ? ketQua + '*' : ketQua + '&nbsp;&nbsp;';
+                }
+                ketQua += '<br>';
+            }
+            document.getElementById("hinh3").innerHTML = ketQua;
+
+            // Hinh 4
+            ketQua = '';
+            for (i = 1; i <= kichThuoc; i++) {
+                for (j = 1; j <= kichThuoc; j++) {
+                    ketQua = j < i ? ketQua + '&nbsp;&nbsp;' : ketQua + '*';
+                }
+                ketQua += '<br>';
+            }
+            document.getElementById("hinh4").innerHTML = ketQua;
+        }
+    </script>
+</body>
+
+</html>
