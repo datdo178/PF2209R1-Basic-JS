@@ -38,13 +38,14 @@
             console.log('so da nhap: ', soDaNhap);
 
             while (soDaNhap > 0) {
-                if (ketQua !== '' || (soDaNhap % 10) != 0) {
-                    ketQua += (soDaNhap % 10);
-                }
+                // if (ketQua !== '' || (soDaNhap % 10) != 0) {
+                //     ketQua += (soDaNhap % 10);
+                // }
+                ketQua += (soDaNhap % 10);
                 soDaNhap = parseInt(soDaNhap / 10);
             }
 
-            document.getElementById('ketQua').innerHTML = ketQua;
+            document.getElementById('ketQua').innerHTML = parseInt(ketQua);
         }
     </script>
 
