@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>soDaoNguoc</title>
+    <style>
+        button {
+            border: 0px;
+            border-radius: 3px;
+            float: right;
+
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td><input id="nhapSo" type="number" style="border-color:darkslateblue;" /></td>
+        </tr>
+        <tr>
+            <td>
+                <button type="button" onclick=""
+                    style="background-color:rgb(200, 200, 201); color: black;">Cancel</button>
+                <button type="button" onclick="ok()" style="background-color:dodgerblue; color: aliceblue;">OK</button>
+            </td>
+        </tr>
+    </table>
+    <div id="ketQua"></div>
+
+    <script>
+        function ok() {
+            let soDaNhap = document.getElementById("nhapSo").value;
+            let ketQua = '';
+            console.log('so da nhap: ', soDaNhap);
+
+            while (soDaNhap > 0) {
+                if (ketQua !== '' || (soDaNhap % 10) != 0) {
+                    ketQua += (soDaNhap % 10);
+                }
+                soDaNhap = parseInt(soDaNhap / 10);
+            }
+
+            document.getElementById('ketQua').innerHTML = ketQua;
+        }
+    </script>
+
+</body>
+
+</html>
