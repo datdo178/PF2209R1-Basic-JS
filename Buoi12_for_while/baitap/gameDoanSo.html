@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hãy thử đoán xem!</title>
+</head>
+
+<body>
+    <button onclick="batDau()">Chơi</button>
+    <script>
+        function batDau() {
+            let max = parseInt(prompt("Nhập vào số giới hạn:"));
+            let soNgauNhien = Math.floor(Math.random() * max);
+            let doan = parseInt(prompt("Số đoán: "));
+
+            while (soNgauNhien !== doan) {
+                doan = parseInt(prompt("Đoán chưa chính xác. Mời nhập lại: "));
+            }
+
+            alert(`Đoán đúng. Kết quả: ${soNgauNhien}`);
+        }
+    </script>
+</body>
+
+</html>
