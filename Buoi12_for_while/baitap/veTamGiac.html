@@ -28,9 +28,12 @@
             let ketQua = '';
             for (i = 1; i <= kichThuoc; i++) {
                 for (j = 1; j <= kichThuoc; j++) {
-                    ketQua = j <= i ? ketQua + '*' : ketQua;
+                    // ketQua = j <= i ? ketQua + '*' : ketQua;
+                    if (j <= i) {
+                        ketQua += "*"
+                    }
                 }
-                ketQua += '<br>';
+                ketQua += "<br>";
             }
             document.getElementById("hinh1").innerHTML = ketQua;
 
@@ -38,9 +41,12 @@
             ketQua = '';
             for (i = 1; i <= kichThuoc; i++) {
                 for (j = kichThuoc; j > 0; j--) {
-                    ketQua = j >= i ? ketQua + '*' : ketQua;
+                    // ketQua = j >= i ? ketQua + '*' : ketQua;
+                    if (j >= i) {
+                        ketQua += "*"
+                    }
                 }
-                ketQua += '<br>';
+                ketQua += "<br>";
             }
             document.getElementById("hinh2").innerHTML = ketQua;
 

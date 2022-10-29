@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In Hinh Chu Nhat</title>
+</head>
+
+<body>
+    <h1>Vẽ hình chữ nhật</h1>
+    Nhập chiều cao:
+    <input type="number" id="so_dong" /><br>
+    Nhập chiều dài:
+    <input type="number" id="so_cot" /><br>
+    <button type="button" onclick="veHinh()">Vẽ Hình</button>
+    <div id="ket_qua" style="color:blue;"></div>
+
+    <script>
+        function veHinh() {
+            let so_dong = document.getElementById("so_dong").value;
+            let so_cot = document.getElementById("so_cot").value;
+            let ket_qua = '';
+
+            for (let i = 0; i < so_dong; i++) {
+                for (let j = 0; j < so_cot; j++) {
+                    ket_qua += "*";
+                }
+                ket_qua += "<br>";
+            }
+            document.getElementById("ket_qua").innerHTML = ket_qua;
+        }
+    </script>
+</body>
+
+</html>

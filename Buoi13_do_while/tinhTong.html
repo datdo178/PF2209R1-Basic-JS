@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button type="button" onclick="xuLyTinhTong()">Nhập số</button>
+    <div id="ketQua"></div>
+
+    <script>
+        function xuLyTinhTong() {
+            let sum = 0;
+            let soNhap = 0;
+
+            do {
+                soNhap = parseInt(prompt("Nhập số: "));
+
+                if (!isNaN(soNhap)) {
+                    sum += soNhap;
+                }
+            } while (soNhap != 0 || soNhap == null);
+
+            document.getElementById("ketQua").innerHTML = `Tổng các số vừa nhập: ${sum}`;
+        }
+    </script>
+</body>
+
+</html>
