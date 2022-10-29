@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>JavaScript Loops </h2>
+    <h3>Bai 1</h3>
+    <p id="demo"></p>
+
+    <h3>Bai 2</h3>
+    Bài 2 là phần nhập số và tính tổng trên prompt, alert
+
+    <script>
+        // Bai 1
+        let text = "";
+        let i;
+        for (i = 0; i < 5; i++) {
+            text += "The number is " + i + "<br>";
+        }
+        document.getElementById("demo").innerHTML = text;
+
+        // Bai 2
+        let num = parseInt(prompt("Enter your number: "));
+        let total = 0;
+        let j = 1;
+        for (; j <= num; j += 1) {
+            total = total + i;
+        }
+        alert(total);
+
+    </script>
+</body>
+
+</html>
