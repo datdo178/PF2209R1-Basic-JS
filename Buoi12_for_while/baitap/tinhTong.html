@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>JavaScript Loops </h2>
+    Nhập số thứ nhất:
+    <input type="number" id="numA" /><br>
+    Nhập số thứ hai:
+    <input type="number" id="numB" /><br>
+    <button type="button" onclick="tinhToan()">Tính</button>
+    <div id="ketQua"></div>
+    <script>
+        function tinhToan() {
+            let numA = parseInt(document.getElementById("numA").value);
+            let numB = parseInt(document.getElementById("numB").value);
+            let total = 0;
+            let soBe = numA < numB ? numA : numB;
+            let soLon = numA > numB ? numA : numB;
+
+            if (soBe === soLon) {
+                total = soBe * 2;
+            } else {
+                for (i = soBe; i <= soLon; i++) {
+                    total = total + i;
+                }
+            }
+
+            document.getElementById("ketQua").innerHTML = `Kết quả: ${total}`;
+        }
+
+
+    </script>
+</body>
+
+</html>
