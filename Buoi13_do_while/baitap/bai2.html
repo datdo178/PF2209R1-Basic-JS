@@ -18,14 +18,35 @@
         do {
             nhietDo = parseInt(prompt(message));
 
-            if (nhietDo > 100) {
-                message = "Nhiệt độ quá cao (>100). Mời nhập lại:"
+            if (isNaN(nhietDo)) {
+                message = "Nhiệt độ không hợp lý. Mời nhập lại:";
             } else if (nhietDo < 20) {
-                message = "Nhiệt độ quá thấp (<20). Mời nhập lại:"
+                message = "Nhiệt độ quá thấp (<20). Mời nhập lại:";
+            } else if (nhietDo > 100) {
+                message = "Nhiệt độ quá cao (>100). Mời nhập lại:";
             }
-        } while (nhietDo < 20 || nhietDo > 100);
+        } while (nhietDo < 20 || nhietDo > 100 || isNaN(nhietDo));
 
         alert(`Nhiệt độ an toàn: ${nhietDo}`);
+
+        /* Cách giải của Thầy
+        do {
+            let nhietDo = parseInt(prompt("Nhập nhiệt độ:"));
+
+            if (nhietDo > 100) {
+                alert("Cần giảm nhiệt độ!");
+                continue;
+            }
+
+            if (nhietDo < 20) {
+                alert("Cần tăng nhiệt độ!");
+                continue;
+            }
+
+            alert("Nhiệt độ hợp lý!");
+            break;
+        } while (true);
+        */
     </script>
 </body>
 

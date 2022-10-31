@@ -13,19 +13,16 @@
     <div id="ketQua"></div>
     <script>
         function inDaySo() {
-            let soLuong = 20;
             let soThuNhat = 1;
             let soThuHai = 1;
             let ketQua = "Kết qủa: ";
 
-            while (soLuong > 0) {
+            for (let i = 1; i < 21; i++) {
                 ketQua += ` - ${soThuNhat}`;
 
                 bienTam = soThuNhat;
                 soThuNhat = soThuHai;
                 soThuHai = soThuHai + bienTam;
-
-                soLuong--;
             }
 
             document.getElementById("ketQua").innerHTML = ketQua;
