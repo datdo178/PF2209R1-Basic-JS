@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính tổng</title>
+</head>
+
+<body>
+    <button type="button" onclick="inTong()">In tổng 30 số chia hết cho 7 đầu tiên trong các số tự nhiên</button>
+    <div id="ketQua"></div>
+    <script>
+        function inTong() {
+            let soLuong = 30;
+            let soKiemTra = 7;
+            let ketQua = 0;
+
+            while (soLuong > 0) {
+                if (soKiemTra % 7 === 0) {
+                    ketQua += soKiemTra;
+                    soLuong--;
+                }
+
+                soKiemTra++;
+            }
+
+            document.getElementById("ketQua").innerHTML = `Kết quả: ${ketQua}`;
+        }
+    </script>
+</body>
+
+</html>

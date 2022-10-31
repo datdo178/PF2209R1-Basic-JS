@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Tìm số Fibonacci đầu tiên chia hết cho:
+    <input type="number" id="uocSo" />
+    <button type="button" onclick="tim()">Tìm</button>
+    <div id="ketQua"></div>
+    <script>
+        function tim() {
+            let uocSo = document.getElementById("uocSo").value;
+            let soThuNhat = 1;
+            let soThuHai = 1;
+
+            while (true) {
+                if (soThuNhat % uocSo === 0) {
+                    document.getElementById("ketQua").innerHTML = soThuNhat;
+                    break;
+                }
+
+                bienTam = soThuNhat;
+                soThuNhat = soThuHai;
+                soThuHai = bienTam + soThuNhat;
+            }
+        }
+    </script>
+</body>
+
+</html>

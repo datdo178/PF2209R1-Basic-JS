@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dãy số</title>
+</head>
+
+<body>
+    <button type="button" onclick="inDaySo()">In dãy số</button>
+    <div id="ketQua"></div>
+    <script>
+        function inDaySo() {
+            let ketQua = 'Kết quả:<br>';
+
+            for (let i = 1; i < 101; i++) {
+                if (i % 5 === 0 && i % 3 === 0) {
+                    ketQua += "FizzBuzz<br>";
+                } else if (i % 3 === 0) {
+                    ketQua += "Fizz<br>";
+                } else if (i % 5 === 0) {
+                    ketQua += "Buzz<br>";
+                } else {
+                    ketQua += i + "<br>";
+                }
+            }
+
+            document.getElementById("ketQua").innerHTML = ketQua;
+        }
+    </script>
+</body>
+
+</html>

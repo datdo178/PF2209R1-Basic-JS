@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci</title>
+</head>
+
+<body>
+    <button type="button" onclick="inTong()">In tổng 20 số Fibonacci đầu tiên</button>
+    <div id="ketQua"></div>
+    <script>
+        function inTong() {
+            let soLuong = 20;
+            let soThuNhat = 1;
+            let soThuHai = 1;
+            let ketQua = 0;
+
+            while (soLuong > 0) {
+                ketQua += soThuNhat;
+
+                bienTam = soThuNhat;
+                soThuNhat = soThuHai;
+                soThuHai = soThuHai + bienTam;
+
+                soLuong--;
+            }
+
+            document.getElementById("ketQua").innerHTML = `Kết quả: ${ketQua}`;
+        }
+    </script>
+</body>
+
+</html>
