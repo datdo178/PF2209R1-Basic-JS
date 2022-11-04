@@ -13,14 +13,14 @@
     <div id="ketQua"></div>
     <script>
         function inTong() {
-            let soLuong = 30;
-            let soKiemTra = 7;
+            let soLuong = 0;
+            let soKiemTra = 0;
             let ketQua = 0;
 
-            while (soLuong > 0) {
+            while (soLuong < 30) {
                 if (soKiemTra % 7 === 0) {
                     ketQua += soKiemTra;
-                    soLuong--;
+                    soLuong++;
                 }
 
                 soKiemTra++;
