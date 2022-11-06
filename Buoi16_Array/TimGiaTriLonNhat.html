@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VDMang</title>
+</head>
+
+<body>
+    <script>
+        let arr1 = [-3, 5, 1, 3, 2, 10];
+        let index = 0;
+
+        for (let i = 1; i < arr1.length; i++) {
+            if (arr1[i] > arr1[index]) {
+                index = i;
+            }
+        }
+
+        console.log('Max value is', arr1[index], 'at position', index);
+    </script>
+</body>
+
+</html>

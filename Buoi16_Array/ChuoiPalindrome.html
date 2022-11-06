@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm tra chuỗi đối xứng</title>
+</head>
+
+<body>
+    <script>
+        // let array1 = [1, 2, 3, 4, 3, 2, 1];
+        let input;
+
+        do {
+            input = prompt('Nhập chuỗi:');
+        } while (input === '')
+
+        let first = 0;
+        let last = input.length - 1;
+        let isPalindrome = 'Là chuỗi Palindrome!';
+
+        while (first < last) {
+            if (input[first] !== input[last]) {
+                isPalindrome = 'Không là chuỗi Palindrome!';
+                break;
+            }
+            first++;
+            last--;
+        }
+
+        alert(isPalindrome);
+    </script>
+</body>
+
+</html>
