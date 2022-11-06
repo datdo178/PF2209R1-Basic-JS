@@ -40,11 +40,6 @@
         let board = [];
         let value = 'X';
 
-        function setSize() {
-            size = document.getElementById("boardsize").value;
-            initBoard();
-        }
-
         function initBoard() {
             value = 'X';
             board = [];
@@ -62,6 +57,12 @@
         }
 
         initBoard();
+
+        function setSize() {
+            size = document.getElementById("boardsize").value;
+            initBoard();
+        }
+
 
         // Display initial board data
         function dispBoard(board) {
