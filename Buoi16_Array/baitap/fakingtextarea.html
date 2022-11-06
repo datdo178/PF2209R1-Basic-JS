@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faking Textarea</title>
+</head>
+
+<body>
+    <h1>Type anything slowly</h1>
+    <textarea id="working" cols="40" rows="10" onkeyup="display()"></textarea>
+
+    <script>
+        let textArea = document.getElementById("working");
+        let fixedStr = 'HELLO BUDDY. THIS IS A JOKING TEXTAREA!!!';
+        let displayedStr = '';
+        let i = 0;
+
+        function display() {
+            // Clear textarea
+            textArea.value = '';
+
+            // Update displayed content in textarea
+            displayedStr += fixedStr[i];
+            textArea.value = displayedStr;
+
+            if (i >= fixedStr.length) {
+                textArea.value = '';
+                displayedStr = '';
+                i = 0;
+            } else {
+                i++
+            }
+        }
+    </script>
+</body>
+
+</html>
