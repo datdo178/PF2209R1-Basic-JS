@@ -22,11 +22,15 @@
         Xác định người chiến thằng nhập giá trị có 3 ô liên tiếp giống nhau.
     </pre>
 
-    <h3>Caro Game Simple</h3>
+    <h1>Caro Game Simple</h1>
+    Set the size of board (default: 7x7):
+    <input type="number" id="boardsize">
+    <button type="button" onclick="setSize()">Change size</button>
+    <br><br>
     <table id="carogame" border="1" cellspacing="0" cellpadding="16"></table>
     <br>
     <div id="ketQua" style="color:blue"></div>
-    <input type="button" value="Change Value" onclick="changeValue()">
+    <input type="button" id="changeValueBtn" value="Change Value" onclick="changeValue()">
     <input type="button" value="Restart Game" onclick="initBoard()">
     <script>
         let b = document.getElementById("carogame");
@@ -34,8 +38,15 @@
         // Init board data
         let size = 7;
         let board = [];
+        let value = 'X';
+
+        function setSize() {
+            size = document.getElementById("boardsize").value;
+            initBoard();
+        }
 
         function initBoard() {
+            value = 'X';
             board = [];
 
             for (let i = 0; i < size; i++) {
@@ -47,6 +58,7 @@
             }
 
             dispBoard(board);
+            document.getElementById("ketQua").innerHTML = '';
         }
 
         initBoard();
@@ -80,10 +92,16 @@
                 crossValues2 = '';
 
             for (let i = - 2; i < 3; i++) {
-                verticalValues += board[x + i][y];
                 horizontalValues += board[x][y + i];
-                crossValues1 += board[x + i][y + i];
-                crossValues2 += board[x - i][y + i];
+
+                if ((x + i) > -1 && (x + i) < size) {
+                    verticalValues += board[x + i][y];
+                    crossValues1 += board[x + i][y + i];
+                }
+
+                if ((x - i) > -1 && (x - i) < size) {
+                    crossValues2 += board[x - i][y + i];
+                }
             }
 
             checkingValues.push(verticalValues.replaceAll(undefined, ''));
@@ -101,8 +119,6 @@
         }
 
         // Play
-        let value = 'X';
-
         function changeValue() {
             let positionX = parseInt(prompt(`Player ${value} - enter X: `));
             let positionY = parseInt(prompt(`Player ${value} - enter Y: `));
@@ -121,7 +137,7 @@
 
             if (isWin(positionX, positionY)) {
                 document.getElementById("ketQua").innerHTML = `<b>MATCHER PLAYER: ${board[positionX][positionY]}<b>`;
-                value = 'X';
+                document.getElementById("changeValueBtn").style.display = 'none';
             }
         }
 
