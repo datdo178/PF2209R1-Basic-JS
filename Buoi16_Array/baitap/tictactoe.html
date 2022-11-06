@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"" content=" width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <style>
+        td {
+            width: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <h4>Tic Tac Toe</h4>
+    <pre>
+        Xây dựng game caro đơn giản sử dụng phần thực hành về tạo bàn cờ caro.
+        Bàn cờ thay vì số 0 hiển thị mặc định bằng dấu chấm (.)
+        Có 2 người chơi lần lượt nhập vào là X và O. Mỗi lần giá trị được nhập vào thì bàn cờ thay đổi giá trị theo người chơi. 
+        Xác định người chiến thằng nhập giá trị có 3 ô liên tiếp giống nhau.
+    </pre>
+
+    <h3>Caro Game Simple</h3>
+    <table id="carogame" border="1" cellspacing="0" cellpadding="16"></table>
+    <br>
+    <div id="ketQua" style="color:blue"></div>
+    <input type="button" value="Change Value" onclick="changeValue()">
+    <input type="button" value="Restart Game" onclick="initBoard()">
+    <script>
+        let b = document.getElementById("carogame");
+
+        // Init board data
+        let size = 7;
+        let board = [];
+
+        function initBoard() {
+            board = [];
+
+            for (let i = 0; i < size; i++) {
+                board.push([]);
+
+                for (let j = 0; j < size; j++) {
+                    board[i].push('.');
+                }
+            }
+
+            dispBoard(board);
+        }
+
+        initBoard();
+
+        // Display initial board data
+        function dispBoard(board) {
+            let boardElm = document.getElementById('carogame');
+            boardElm.innerHTML = '';
+
+            for (let i = 0; i < size; i++) {
+                let row = document.createElement('tr');
+
+                for (let j = 0; j < size; j++) {
+                    let cell = document.createElement('td');
+                    cell.innerHTML = board[i][j];
+                    row.appendChild(cell);
+                }
+
+                boardElm.appendChild(row);
+            }
+        }
+
+        // Check if any player win
+        function isWin(x, y) {
+            let currentValue = board[x][y];
+            let winValue = currentValue === 'X' ? 'XXX' : 'OOO';
+            let checkingValues = [],
+                verticalValues = '',
+                horizontalValues = '',
+                crossValues1 = '',
+                crossValues2 = '';
+
+            for (let i = - 2; i < 3; i++) {
+                verticalValues += board[x + i][y];
+                horizontalValues += board[x][y + i];
+                crossValues1 += board[x + i][y + i];
+                crossValues2 += board[x - i][y + i];
+            }
+
+            checkingValues.push(verticalValues.replaceAll(undefined, ''));
+            checkingValues.push(horizontalValues.replaceAll(undefined, ''));
+            checkingValues.push(crossValues1.replaceAll(undefined, ''));
+            checkingValues.push(crossValues2.replaceAll(undefined, ''));
+
+            for (let i = 0; i < 4; i++) {
+                if (checkingValues[i].indexOf(winValue) !== -1) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        // Play
+        let value = 'X';
+
+        function changeValue() {
+            let positionX = parseInt(prompt(`Player ${value} - enter X: `));
+            let positionY = parseInt(prompt(`Player ${value} - enter Y: `));
+            let currentValue = board[positionX][positionY];
+
+            while (currentValue !== '.') {
+                positionX = parseInt(prompt(`Please select an empty cell. Player ${value} - re-enter X: `));
+                positionY = parseInt(prompt(`Please select an empty cell. Player ${value} - re-enter Y: `));
+                currentValue = board[positionX][positionY];
+            }
+
+            board[positionX][positionY] = value;
+            value = value === 'X' ? 'O' : 'X';
+
+            dispBoard(board);
+
+            if (isWin(positionX, positionY)) {
+                document.getElementById("ketQua").innerHTML = `<b>MATCHER PLAYER: ${board[positionX][positionY]}<b>`;
+                value = 'X';
+            }
+        }
+
+    </script>
+</body>
+
+</html>
