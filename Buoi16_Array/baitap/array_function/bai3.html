@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array functions</title>
+</head>
+
+<body>
+
+    <body>
+        <p>String is a special array</p>
+        <script>
+            let str = prompt('Nhập chuỗi: ');
+            let result = '';
+
+            for (let i = 0; i < str.length - 1; i++) {
+                if (str[i] !== str[i].toUpperCase()) {
+                    result += str[i].toUpperCase();
+                } else {
+                    result += str[i].toLowerCase();
+                }
+            }
+
+            alert(`Result: ${result}`);
+        </script>
+    </body>
+
+</html>

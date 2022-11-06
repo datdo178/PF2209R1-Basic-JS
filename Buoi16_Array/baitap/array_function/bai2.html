@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Functions - string</title>
+</head>
+
+<body>
+    <p>String is a special array</p>
+    <script>
+        let numChain = prompt('Nhập dãy số: ');
+        let result = '';
+
+        for (let i = 0; i < numChain.length - 1; i++) {
+            result += numChain[i];
+            if (numChain[i] % 2 === 0 && numChain[i + 1] % 2 === 0) {
+                result += '-';
+            }
+        }
+        result += numChain[numChain.length - 1];
+
+        alert(`Result: ${result}`);
+    </script>
+</body>
+
+</html>
