@@ -11,16 +11,15 @@
 <body>
     <h3>Caro Game Simple</h3>
     <div id="ketQua"></div><br>
-    <button onclick="changeValue()">Change Value</button>
+    <button onclick="khoiTaoMang()">Reset</button>
 
 
     <script>
         function khoiTaoMang() {
             const DONG = 5, COT = 5;
+            document.getElementById("ketQua").innerHTML = '';
             let bang = document.createElement("table");
             bang.setAttribute("border", "1");
-            // bang.setAttribute("cellspacing", "0");
-            // bang.setAttribute("cellpadding", "10");
 
 
             for (let i = 0; i < DONG; i++) {
@@ -30,6 +29,7 @@
                     let cell = document.createElement("td");
                     cell.setAttribute("id", `${i}-${j}`);
                     cell.setAttribute("style", "width: 30px; height: 30px; text-align: center;");
+                    cell.setAttribute("onclick", "changeValue(this.id)");
 
                     cell.innerHTML = ' ';
                     hang.appendChild(cell);
@@ -45,11 +45,10 @@
 
         let value = 'X';
 
-        function changeValue() {
-            let X = parseInt(prompt("Nhap X:"));
-            let Y = parseInt(prompt("Nhap Y:"));
+        function changeValue(id) {
+            let arr = id.split('-');
 
-            document.getElementById(`${X}-${Y}`).innerHTML = value;
+            document.getElementById(id).innerHTML = value;
             value = value === 'X' ? 'O' : 'X';
         }
     </script>
