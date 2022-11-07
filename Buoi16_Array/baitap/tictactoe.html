@@ -8,7 +8,9 @@
     <title>Tic Tac Toe</title>
     <style>
         td {
-            width: 8px;
+            width: 30px;
+            height: 30px;
+            text-align: center;
         }
     </style>
 </head>
@@ -27,7 +29,7 @@
     <input type="number" id="boardsize">
     <button type="button" onclick="setSize()">Change size</button>
     <br><br>
-    <table id="carogame" border="1" cellspacing="0" cellpadding="16"></table>
+    <table id="carogame" border="1"></table>
     <br>
     <div id="ketQua" style="color:blue"></div>
     <input type="button" id="changeValueBtn" value="Change Value" onclick="changeValue()">
@@ -48,7 +50,7 @@
                 board.push([]);
 
                 for (let j = 0; j < size; j++) {
-                    board[i].push('.');
+                    board[i].push(' ');
                 }
             }
 
@@ -125,7 +127,7 @@
             let positionY = parseInt(prompt(`Player ${value} - enter Y: `));
             let currentValue = board[positionX][positionY];
 
-            while (currentValue !== '.') {
+            while (currentValue !== ' ') {
                 positionX = parseInt(prompt(`Please select an empty cell. Player ${value} - re-enter X: `));
                 positionY = parseInt(prompt(`Please select an empty cell. Player ${value} - re-enter Y: `));
                 currentValue = board[positionX][positionY];

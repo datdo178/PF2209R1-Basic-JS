@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caro</title>
+</head>
+
+<body>
+    <h3>Caro Game Simple</h3>
+    <div id="ketQua"></div><br>
+    <button onclick="changeValue()">Change Value</button>
+
+
+    <script>
+        function khoiTaoMang() {
+            const DONG = 5, COT = 5;
+            let bang = document.createElement("table");
+            bang.setAttribute("border", "1");
+            // bang.setAttribute("cellspacing", "0");
+            // bang.setAttribute("cellpadding", "10");
+
+
+            for (let i = 0; i < DONG; i++) {
+                let hang = document.createElement("tr");
+
+                for (let j = 0; j < COT; j++) {
+                    let cell = document.createElement("td");
+                    cell.setAttribute("id", `${i}-${j}`);
+                    cell.setAttribute("style", "width: 30px; height: 30px; text-align: center;");
+
+                    cell.innerHTML = ' ';
+                    hang.appendChild(cell);
+                }
+
+                bang.appendChild(hang);
+            }
+
+            document.getElementById("ketQua").appendChild(bang);
+        }
+
+        khoiTaoMang();
+
+        let value = 'X';
+
+        function changeValue() {
+            let X = parseInt(prompt("Nhap X:"));
+            let Y = parseInt(prompt("Nhap Y:"));
+
+            document.getElementById(`${X}-${Y}`).innerHTML = value;
+            value = value === 'X' ? 'O' : 'X';
+        }
+    </script>
+</body>
+
+</html>

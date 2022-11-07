@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vi du</title>
+</head>
+
+<body>
+    <pre>
+        1. Nhập số dòng, số cột của ma trận.
+        2. Khởi tạo giá trị ngẫu nhiên của mỗi phần tử
+        3. Xuất ma trận
+    </pre>
+    Nhập số dòng: <input type="number" id="soDong" min="1" /><br>
+    Nhập số cột: <input type="number" id="soCot" min="1" /><br>
+    <button onclick="khoiTao()">Khởi tạo ma trận</button>
+    <div id="ketQua"></div>
+
+    <script>
+        function khoiTao() {
+            let soDong = parseInt(document.getElementById("soDong").value);
+            let soCot = parseInt(document.getElementById("soCot").value);
+
+            let maTran = new Array(soDong).fill(new Array(soCot));
+            let ketQua = '';
+            let bang = document.createElement("table");
+            bang.setAttribute("border", "1");
+
+            for (let i = 0; i < soDong; i++) {
+                let dong = document.createElement("tr");
+
+                for (let j = 0; j < soCot; j++) {
+                    let o = document.createElement("td");
+
+                    maTran[i][j] = Math.floor(Math.random() * 100);
+                    o.innerHTML = `${maTran[i][j]}`;
+
+                    dong.appendChild(o);
+                }
+
+                bang.appendChild(dong);
+            }
+
+            document.getElementById("ketQua").appendChild(bang);
+        }
+    </script>
+</body>
+
+</html>
