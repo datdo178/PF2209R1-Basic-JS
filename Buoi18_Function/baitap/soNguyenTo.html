@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Số Nguyên Tố</title>
+</head>
+
+<body>
+    <h2>Số Nguyên Tố</h2>
+    Nhập số:
+    <input type="number" id="number" /><br>
+    <button type="button" onclick="thucHien0(); thucHien();">Thực hiện</button>
+    <div id="result0"></div>
+    <div id="result"></div>
+
+    <script>
+        function thucHien0() {
+            let isPrime = true;
+            let checkingNum = parseInt(document.getElementById("number").value);
+
+            for (let i = 2; i < checkingNum; i++) {
+                if (checkingNum % i === 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+
+            document.getElementById("result0").innerHTML = `${checkingNum} - isPrime: ${isPrime}`;
+        }
+
+        function thucHien() {
+            let count = 1;
+            let endCount = parseInt(document.getElementById("number").value);
+            let ketQua = '2'; // 2 là số nguyên tố đầu tiên
+            let checkingNum = 3;
+
+            while (count < endCount) {
+                let isPrime = true;
+
+                for (i = 2; i < checkingNum; i++) {
+                    if (checkingNum % i === 0) {
+                        isPrime = false;
+                        break;
+                    }
+                }
+
+
+                if (isPrime === true) {
+                    ketQua += ` - ${checkingNum}`;
+                    count++;
+                }
+
+                checkingNum++;
+            }
+
+            document.getElementById("result").innerHTML = `${endCount} first prime(s):<br> ${ketQua}`;
+        }
+    </script>
+</body>
+
+</html>

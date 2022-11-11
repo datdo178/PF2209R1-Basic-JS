@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Meter:
+    <input type="number" id="meter" /> <br>
+    Foot:
+    <input type="number" id="foot" /> <br>
+    <button type="button" onclick="meterToFoot(); footToMeter()">Convert</button><br>
+    <div id="ketQua"></div>
+
+    <script>
+        function meterToFoot() {
+            let meter = document.getElementById("meter").value;
+
+            if (meter) {
+                let result = `${meter} meter = ${3.279 * meter} foot`;
+                document.getElementById("ketQua").innerHTML = result;
+            }
+        }
+
+
+        function footToMeter() {
+            let foot = document.getElementById("meter").value;
+
+            if (foot) {
+                let result = `${meter} = ${0.305 * meter} foot`;
+                document.getElementById("ketQua").innerHTML = result;
+            }
+        }
+    </script>
+</body>
+
+</html>
