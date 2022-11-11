@@ -10,15 +10,15 @@
 
 <body>
     Meter:
-    <input type="number" id="meter" /> <br>
+    <input type="number" id="meter" oninput="clearFoot()" /> <br>
     Foot:
-    <input type="number" id="foot" /> <br>
+    <input type="number" id="foot" oninput="clearMeter()" /> <br>
     <button type="button" onclick="meterToFoot(); footToMeter()">Convert</button><br>
     <div id="ketQua"></div>
 
     <script>
         function meterToFoot() {
-            let meter = document.getElementById("meter").value;
+            let meter = parseFloat(document.getElementById("meter").value);
 
             if (meter) {
                 let result = `${meter} meter = ${3.279 * meter} foot`;
@@ -28,12 +28,20 @@
 
 
         function footToMeter() {
-            let foot = document.getElementById("meter").value;
+            let foot = parseFloat(document.getElementById("foot").value);
 
             if (foot) {
-                let result = `${meter} = ${0.305 * meter} foot`;
+                let result = `${foot} foot = ${0.305 * foot} meter`;
                 document.getElementById("ketQua").innerHTML = result;
             }
+        }
+
+        function clearFoot() {
+            document.getElementById("foot").value = ``;
+        }
+
+        function clearMeter() {
+            document.getElementById("meter").value = ``;
         }
     </script>
 </body>
