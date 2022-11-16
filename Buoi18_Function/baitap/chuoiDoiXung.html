@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Xây dựng chương trình sử dụng đệ quy để kiểm tra một từ có phải là từ đối xứng không. Phương thức kiểm tra chuỗi
+        đối xứng có nguyên mẫu như sau:
+
+        function isPalindrome(s) ;</p>
+
+    Input str:
+    <input id="inputStr">
+    <button type="button" onclick="check()">Check</button>
+
+
+    <script>
+        function isPalindrome(s) {
+            while (s.length > 1) {
+                if (s[0] === s[s.length - 1]) {
+                    s = s.slice(1, s.length - 1);
+                    isPalindrome(s);
+                } else {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        function check() {
+            let str = document.getElementById("inputStr").value;
+
+            if (str === '') {
+                alert('Please input the string!');
+                return;
+            }
+
+            if (isPalindrome(str)) {
+                alert('The input is a Palindrome string!');
+            } else {
+                alert('The input is NOT a Palindrome string!');
+            }
+        }
+    </script>
+</body>
+
+</html>
