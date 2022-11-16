@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Viết hàm tính diện tích, hàm tính chu vi hình tròn. Gọi hàm vừa xây dựng được</p>
+
+    Input circle radius:
+    <input type="number" id="inputNum">
+    <button type="button" onclick="cal()">Calculate</button><br>
+    <div id="result"></div>
+
+    <script>
+        function surface(radius) {
+            return radius * radius * Math.PI;
+        }
+
+        function perimeter(radius) {
+            return radius * 2 * Math.PI;
+        }
+
+        function cal() {
+            let radius = parseFloat(document.getElementById("inputNum").value);
+
+            if (isNaN(radius)) {
+                alert('Input a number');
+                return;
+            }
+
+            if (radius < 0) {
+                alert('Input a positive number (>0)');
+                return;
+            }
+
+            let s = surface(radius).toFixed(2);
+            let p = perimeter(radius).toFixed(2);
+            document.getElementById("result").innerHTML = `S = ${s}; P = ${p}`;
+        }
+    </script>
+</body>
+
+</html>

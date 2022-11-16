@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Viết hàm truyền vào một mảng ký tự, và một ký tự bất kỳ, kiểm tra xem ký tự bất kỳ đó có nằm trong mảng không.
+        Nếu có trả về số lần xuất hiện của ký tự đó, nếu không trả về -1. </p>
+
+
+    Input a char sequence, seperated by ",":
+    <input id="input"><br>
+    Input the char to find:
+    <input id="searchingChar"><br>
+    <button type="button" onclick="exc()">Check</button><br>
+    <div id="result"></div>
+
+    <script>
+        function countSpecificCharElmInArray(arr, char) {
+            let existTimes = -1;
+
+            for (let elm of arr) {
+                if (elm === char) {
+                    existTimes++;
+                }
+            }
+
+            return existTimes > -1 ? existTimes + 1 : -1;
+        }
+
+        function isCharArray(arr) {
+            let isCharArray = true;
+
+            for (let elm of arr) {
+                if (typeof (elm) !== 'string' || elm.length > 1) {
+                    isCharArray = false;
+                    break;
+                }
+            }
+
+            return isCharArray;
+        }
+
+        function exc() {
+            let searchingChar = document.getElementById("searchingChar").value;
+            let input = document.getElementById("input").value;
+            let inputArr = input.split(",");
+            console.log(inputArr);
+
+            if (!isCharArray(inputArr)) {
+                alert("Only accept array with all 1-character elements");
+                return;
+            }
+
+            let result = countSpecificCharElmInArray(inputArr, searchingChar);
+            let resultStr = result === -1
+                ? `There is no "${searchingChar}" in input array.`
+                : `There is ${result} "${searchingChar}" in input array`;
+
+            document.getElementById("result").innerHTML = `Input Array: ['${inputArr.join("', '")}']
+                <br>Result: ${resultStr}`;
+        }
+    </script>
+</body>
+
+</html>

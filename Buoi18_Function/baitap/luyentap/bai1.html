@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai 1</title>
+</head>
+
+<body>
+    <p>Bài 1: Tạo hàm nhận vào hai tham số. Nếu giá trị của tham số thứ nhất lớn hơn tham số thứ hai, hiển thị hộp thoại
+        thông báo cho người dùng. Nếu giá trị của tham số thứ n</p>
+
+    Input a: <input type="number" id="a" /><br>
+    Input b: <input type="number" id="b" /><br>
+    <button type="button" onclick="bai1()">Calculate</button>
+    <div id="ketQua"></div>
+
+    <script>
+        function tinhToan(a, b) {
+            if (a > b) {
+                // Yêu cầu đề a > b: hiển thị thông báo cho người dùng
+                alert(`${a} should be less than ${b}`);
+                return;
+            } else {
+                // Yêu cầu đề a <= b: trả về tổng hai tham số
+                return a + b;
+            }
+        }
+
+        function bai1() {
+            let a = parseInt(document.getElementById("a").value);
+            let b = parseInt(document.getElementById("b").value);
+
+            let result = tinhToan(a, b);
+
+            if (result) {
+                document.getElementById("ketQua").innerHTML = `${a} + ${b} = ${result}`
+            }
+        }
+    </script>
+</body>
+
+</html>

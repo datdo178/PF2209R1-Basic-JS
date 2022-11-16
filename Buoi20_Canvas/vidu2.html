@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="myCanvas" height="400" width="400" style="border: 1px solid red;">
+        Your browser doesn't support canvas
+    </canvas>
+
+    <script>
+        let c = document.getElementById("myCanvas");
+        let ctx = c.getContext("2d");
+        let arrColor = ["red", "green", "blue", "#F0F0F0", "#0F0F0F"];
+
+        for (let i = 10; i < 180; i += 20) {
+            ctx.beginPath();
+            ctx.moveTo(i, i);
+            ctx.lineTo(c.width - i, i);
+            ctx.strokeStyle = arrColor[Math.floor(Math.random() * 6)];
+            ctx.stroke();
+            ctx.closePath();
+        }
+    </script>
+</body>
+
+</html>

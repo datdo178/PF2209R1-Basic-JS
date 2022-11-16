@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Viết hàm nhận vào một số, kiểm tra xem nếu số đưa vào có phải là nguyên dương không. Nếu là nguyên dương trả về
+        true, ngược lại trả về false.</p>
+
+    Input a number:
+    <input type="number" id="inputNum">
+    <button type="button" onclick="check()">Check</button><br>
+    <div id="result"></div>
+
+    <script>
+        function isPositiveInt(number) {
+            return Number.isInteger(number) && number > 0;
+        }
+
+        function check() {
+            let value = document.getElementById("inputNum").value;
+
+            // Handle case: input a number start with '0's
+            if (value.startsWith('0')) {
+                let firstNonZeroCharIndex = 0;
+
+                for (let char of value) {
+
+                    console.log(char);
+                    if (char !== '0') {
+                        firstNonZeroCharIndex = value.indexOf(char);
+                        break;
+                    }
+                }
+
+                value = Number(value.slice(firstNonZeroCharIndex));
+            }
+
+            if (isNaN(value) || value === '') {
+                alert('Input a number');
+                return;
+            }
+
+            let result = isPositiveInt(value);
+            document.getElementById("result").innerHTML = `${value} ${result ? 'is a positive integer' : 'is not a positive integer'}`;
+        }
+    </script>
+</body>
+
+</html>

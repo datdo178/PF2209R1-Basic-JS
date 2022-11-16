@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>
+        Viết hàm tính giai thừa của một số nguyên bất kỳ được đưa vào. Gọi hàm vừa xây dựng được.
+    </p>
+
+    Input a number:
+    <input type="number" id="inputNum">
+    <button type="button" onclick="cal()">Calculate</button><br>
+    <div id="result"></div>
+
+    <script>
+        function giaiThua(number) {
+            let result = 1;
+
+            for (let i = 2; i <= number; i++) {
+                result *= i;
+            }
+
+            return result;
+        }
+
+        function cal() {
+            let num = parseFloat(document.getElementById("inputNum").value);
+
+            if (isNaN(num)) {
+                alert('Input a number');
+                return;
+            }
+
+            if (num < 0) {
+                alert('Input a positive number (>0)');
+                return;
+            }
+
+            let result = giaiThua(num);
+            document.getElementById("result").innerHTML = `${num}! = ${result}`;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>
+        Viết hàm kiểm tra xem ký tự nhập vào có phải là ký tự số không. Nếu là ký tự số hàm trả về true, ngược lại trả
+        về false.
+    </p>
+
+    Input a number:
+    <input id="inputNum">
+    <button type="button" onclick="check()">Check</button><br>
+    <div id="result"></div>
+
+    <script>
+        function isNumber(value) {
+            return !isNaN(value)
+                && ['', null].indexOf(value.trim()) === -1  // cover case: isNaN return true for '', null
+                && !(value.startsWith(' ') || value.endsWith(' ')); // cover case: input '   1', '1  ', '  1  '
+        }
+
+        function check() {
+            let value = document.getElementById("inputNum").value;
+
+            let result = isNumber(value);
+
+            document.getElementById("result").innerHTML = `"${value}" ${result ? 'is a number' : 'is not a number'}`;
+        }
+    </script>
+</body>
+
+</html>

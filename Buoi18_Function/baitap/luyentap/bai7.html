@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>
+        Viết hàm nhận vào 3 số nguyên bất kỳ, trả về số nguyên có giá trị nhỏ nhất.
+    </p>
+
+    Input 3 number:
+    <input type="number" id="num1" /> -
+    <input type="number" id="num2" /> -
+    <input type="number" id="num3" />
+    <button type="button" onclick="check()">Find min</button>
+    <div id="result"></div>
+
+    <script>
+        function findMin(a, b, c) {
+            return Math.min(a, b, c);
+        }
+
+        function check() {
+            let num1 = parseFloat(document.getElementById("num1").value);
+            let num2 = parseFloat(document.getElementById("num2").value);
+            let num3 = parseFloat(document.getElementById("num3").value);
+
+
+
+            if (isNaN(num1) || isNaN(num2) || isNaN(num3)) {
+                alert('Please input 3 valid numbers');
+                return;
+            }
+
+            let result = findMin(num1, num2, num3);
+            document.getElementById("result").innerHTML = `Min value: ${result}`;
+        }
+    </script>
+</body>
+
+</html>

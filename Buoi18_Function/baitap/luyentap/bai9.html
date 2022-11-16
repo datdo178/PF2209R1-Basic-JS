@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>
+        Viết hàm truyền vào mảng số nguyên bất kỳ, sau đó đảo ngược mảng số nguyên đó.
+    </p>
+
+    Input a num sequence, seperated by ",":
+    <input id="input">
+    <button type="button" onclick="exc()">Execute</button><br>
+    <div id="result"></div>
+
+    <script>
+        function reverseArr(arr) {
+
+            let tmp = [...arr]; // To not reverse the original arr
+            return tmp.reverse();
+        }
+
+        function isIntArray(arr) {
+            let isIntArray = true;
+
+            for (let elm of arr) {
+                if (!Number.isInteger(elm)) {
+                    isIntArray = false;
+                    break;
+                }
+            }
+
+            return isIntArray;
+        }
+
+        function exc() {
+            let input = document.getElementById("input").value;
+
+            let inputArr = input.split(",");
+            for (let index in inputArr) {
+                inputArr[index] = Number(inputArr[index]);
+            }
+
+            if (!isIntArray(inputArr)) {
+                alert("Only accept array with all integer elements");
+                return;
+            }
+
+            let reversedArr = reverseArr(inputArr);
+            document.getElementById("result").innerHTML = `Input Array: [${inputArr.join(", ")}]
+            <br>Reversed Array: [${reversedArr.join(", ")}]`;
+        }
+    </script>
+</body>
+
+</html>

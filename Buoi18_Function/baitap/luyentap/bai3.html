@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Viết hàm tính bình phương của một số bất kỳ được đưa vào. Gọi hàm vừa xây dựng được.</p>
+
+    Input a number:
+    <input type="number" id="inputNum">
+    <button type="button" onclick="cal()">Calculate</button><br>
+    <div id="result"></div>
+
+    <script>
+        function square(number) {
+            return number ** 2;
+        }
+
+        function cal() {
+            let num = parseFloat(document.getElementById("inputNum").value);
+
+            if (isNaN(num)) {
+                alert('Input a number');
+                return;
+            }
+
+            let result = square(num);
+            document.getElementById("result").innerHTML = `${num}^2 = ${result}`;
+        }
+    </script>
+</body>
+
+</html>
