@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            color: white;
+            background-color: rgb(74, 139, 9);
+            border: 0;
+            width: 50px;
+            height: 25px;
+            border-radius: 3px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        table {
+            width: 60%;
+        }
+
+        table tr td:nth-child(3) {
+            text-align: right;
+        }
+
+        table tr td:nth-child(4) {
+            text-align: right;
+        }
+
+        table tr:nth-child(even) {
+            background-color: cornsilk;
+        }
+    </style>
+</head>
+
+<body>
+
+    <label>Add New Product</label><br>
+    <input id="newproduct" placeholder="New Product">
+    <button type="button" onclick="addProduct()">Add</button>
+    <hr>
+    <label>Display All Product</label><br>
+    <table id="pdtable">
+    </table>
+
+    <script>
+        let products = ['Candy', 'Ice Cream', 'Cake'];
+
+        function displayProducts() {
+            let table = document.getElementById("pdtable");
+            table.innerHTML = `<tr>
+                <th>No.</th>
+                <th>Product Name</th>
+                <th>Total: ${products.length} products</th>
+            </tr>`;
+
+            for (let index in products) {
+                let row = document.createElement("tr");
+
+                let num = document.createElement("td");
+                let name = document.createElement("td");
+                let editBtn = document.createElement("td");
+                let deleteBtn = document.createElement("td");
+                num.innerHTML = Number(index) + 1;
+                name.innerHTML = products[index];
+                name.setAttribute("id", `name-${index}`);
+                name.setAttribute("onclick", "updateProduct(this.id)");
+                editBtn.innerHTML = `<button type="button" id="edit-${index}" onclick="saveUpdateProduct(this.id)">Edit</button>`;
+                deleteBtn.innerHTML = `<button type="button" id="delete-${index}" onclick="deleteProduct(this.id)">Delete</button>`;
+
+                row.appendChild(num);
+                row.appendChild(name);
+                row.appendChild(editBtn);
+                row.appendChild(deleteBtn);
+
+                table.appendChild(row);
+            }
+
+        }
+
+        displayProducts();
+
+        function addProduct() {
+            let product = document.getElementById("newproduct");
+
+            if (products.indexOf(product.value) !== -1) {
+                alert("Product already exists");
+                return;
+            }
+
+            products.push(product.value);
+            product.value = '';
+            displayProducts();
+        }
+
+        function saveUpdateProduct(editBtnId) {
+            let index = editBtnId.replace("edit-", "");
+            let newName = document.getElementById("edittingName").value;
+
+            if (newName === '') {
+                alert('Product name cannot be empty!')
+                return;
+            } else {
+                products[index] = newName;
+                displayProducts();
+            }
+        }
+
+        function updateProduct(editBtnId) {
+            let index = editBtnId.replace("name-", "");
+
+            let productNameElm = document.getElementById(`name-${index}`);
+            productName = products[index];
+            productNameElm.removeAttribute("onclick");
+
+            productNameElm.innerHTML = `<input id="edittingName" value="${productName}">`;
+            productNameElm.focus();
+        }
+
+        function deleteProduct(deleteBtnId) {
+            let index = deleteBtnId.replace("delete-", "");
+            products.splice(index, 1);
+            displayProducts();
+        }
+    </script>
+</body>
+
+</html>

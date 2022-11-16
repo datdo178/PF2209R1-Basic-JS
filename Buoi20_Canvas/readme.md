@@ -32,7 +32,7 @@
 </script>
 ```
 
-## Vẽ đường
+## Vẽ đường thẳng
 - ctx.moveTo(x,y)
 - ctx.lineTo(x,y)
 
@@ -50,3 +50,24 @@ ctx.arc(x, y, radius, startAngle, endAngle, counterclockwise)
 * counterclockwise: default = fault: ngược kim đồng đồ
 * startAngle: góc bắt đầu (đơn vị radian, theo số Math.PI)
 * endAngle: góc bắt đầu (đơn vị radian, theo số Math.PI)
+
+## Vẽ chữ:
+* Layout configuration: font, textAlign, textBaseline, direction 
+e.g: ctx.font = "30px Arial";
+
+* Vẽ chữ:
+ctx.fillText("Hello World",x,y); 
+ctx.strokeText("Hello World",x,y); => chữ chỉ có đường viền
+x,y là toạ độ bắt đầu vẽ
+
+## Gradient:
+* Linear: createLinearGradient(), addColorStop()
+- createLinearGradient(x0, y0, x1, y1)
+    x0, y0: toạ độ điểm bắt đầu của gradient linear
+    x1, y1: toạ độ điểm kết thúc của gradient linear
+
+* Radial: createRadialGradient()
+
+## Fill:
+fill()
+fillRect(x, y, width, height)
