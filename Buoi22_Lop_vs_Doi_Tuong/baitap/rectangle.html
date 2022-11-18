@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="400" height="200" style="border: 1px solid blue;"></canvas>
+    <div id="ketQua"></div>
+    <script>
+        class Rectangle {
+            constructor(width, height) {
+                this.width = width;
+                this.height = height;
+            }
+
+            getArea() {
+                return this.width * this.height;
+            }
+
+            getPerimeter() {
+                return 2 * (this.width + this.height);
+            }
+
+            setSize(width, height) {
+                this.width = width;
+                this.height = height;
+            }
+
+            draw() {
+                let c = document.getElementById("myCanvas");
+                let ctx = c.getContext("2d");
+
+                ctx.clearRect(0, 0, c.width, c.height);
+                ctx.lineWidth = 3;
+                ctx.strokeStyle = "green";
+                ctx.strokeRect(10, 10, this.width, this.height);
+            }
+        }
+
+        let rec = new Rectangle(250, 80);
+        rec.draw();
+        rec.setSize(80, 250);
+        document.getElementById("ketQua").innerHTML = `Area: ${rec.getArea()} - Perimeter: ${rec.getPerimeter()}.`;
+
+    </script>
+</body>
+
+</html>
