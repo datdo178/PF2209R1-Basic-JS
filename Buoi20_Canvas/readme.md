@@ -47,9 +47,14 @@ ctx.stroke();
 ctx.arc(x, y, radius, startAngle, endAngle)
 ctx.arc(x, y, radius, startAngle, endAngle, counterclockwise)
 ```
-* counterclockwise: default = fault: ngược kim đồng đồ
+* counterclockwise: default = false: ngược kim đồng đồ
 * startAngle: góc bắt đầu (đơn vị radian, theo số Math.PI)
 * endAngle: góc bắt đầu (đơn vị radian, theo số Math.PI)
+
+## Vẽ chữ nhật: (NO FILL)
+- No fill: strokeRect(x, y, width, height)
+- Fill: fillRect(x, y, width, height)
+- Clear: clearRect(x, y, width, height)
 
 ## Vẽ chữ:
 * Layout configuration: font, textAlign, textBaseline, direction 
@@ -68,6 +73,3 @@ x,y là toạ độ bắt đầu vẽ
 
 * Radial: createRadialGradient()
 
-## Fill:
-fill()
-fillRect(x, y, width, height)

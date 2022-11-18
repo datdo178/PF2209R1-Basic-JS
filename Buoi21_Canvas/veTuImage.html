@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="800" height="400" style="border: 1px solid blue;"></canvas>
+
+    <script>
+        let c = document.getElementById("myCanvas");
+        let ctx = c.getContext("2d");
+
+        let imageObj = new Image();
+        imageObj.onload = function () {
+            ctx.drawImage(imageObj, 0, 0, 647 * 1.5, 275 * 1.5);
+        }
+        imageObj.src = "https://img.freepik.com/free-vector/space-banner-with-purple-planet-landscape_107791-6230.jpg?w=1800&t=st=1668606517~exp=1668607117~hmac=f2a96b3ee144565301ecef327fd2b17cfd532f1f8ebdfcf37ed159b1b1180782";
+    </script>
+</body>
+
+</html>

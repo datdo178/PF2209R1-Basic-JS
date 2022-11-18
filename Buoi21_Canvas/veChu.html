@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="800" height="400" style="border: 1px solid blue;"></canvas>
+    <br>
+    <button type="button" onclick="stopDraw()">Stop change color</button>
+
+    <script>
+        let c = document.getElementById("myCanvas");
+        let ctx = c.getContext("2d");
+
+        ctx.font = "60px Times New Roman";
+        ctx.fillStyle = "orange";
+        ctx.fillText("CODE GYM", 20, 80);
+        ctx.strokeStyle = "gold";
+        // ctx.lineWidth = 5;
+        ctx.strokeText("CODE GYM", 20, 80);
+
+        ctx.fillStyle = "green";
+
+
+
+
+        function happyTeacher() {
+            ctx.clearRect(0, 90, c.width, c.height);
+            let str = "HAPPY TEACHER!"
+            let startX = 20;
+
+            for (let char of str) {
+                let randomColor = Math.floor(Math.random() * 16777215).toString(16);
+                ctx.fillStyle = "#" + randomColor;
+                ctx.fillText(char, startX, 190);
+                startX += 42;
+            }
+        }
+
+        let myInt = setInterval(happyTeacher, 500);
+
+        function stopDraw() {
+            clearInterval(myInt);
+        }
+    </script>
+</body>
+
+</html>
