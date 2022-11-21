@@ -49,6 +49,11 @@
 
         function convert() {
             let c = parseFloat(document.getElementById("celcius").value);
+
+            if (!c) {
+                alert("Please input a valid value");
+            }
+
             let c1 = new Temperature(c);
             console.log(c1);
 
