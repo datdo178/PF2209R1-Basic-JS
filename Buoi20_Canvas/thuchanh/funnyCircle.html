@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funny Circle</title>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="1368px" height="768px" style="border:1px solid #d3d3d3;"></canvas>
+
+    <script>
+        function Circle(x, y, radius) {
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+        }
+
+        function getRandomHex() {
+            return Math.floor(Math.random() * 255);
+        }
+
+        function getRandomColor() {
+            let red = getRandomHex();
+            let green = getRandomHex();
+            let blue = getRandomHex();
+            return "rgb(" + red + "," + blue + "," + green + ")";
+        }
+
+        function createCircle() {
+            let ctx = document.getElementById("myCanvas").getContext("2d");
+            let radius = Math.floor(Math.random() * 80);
+            let color = getRandomColor();
+            let x = Math.random() * window.innerWidth;
+            let y = Math.random() * window.innerHeight;
+            let circle = new Circle(x, y, radius);
+
+            ctx.beginPath();
+            ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+            ctx.fillStyle = color;
+            ctx.fill();
+        }
+
+        function createMultipleCircle() {
+            let c = document.getElementById("myCanvas");
+            let ctx = c.getContext("2d");
+
+            ctx.clearRect(0, 0, c.width, c.height);
+
+            for (let i = 0; i < 30; i++) {
+                createCircle();
+            }
+        }
+
+        setInterval(createMultipleCircle, 1000)
+    </script>
+</body>
+
+</html>
