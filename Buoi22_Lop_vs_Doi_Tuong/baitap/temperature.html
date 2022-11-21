@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature</title>
+</head>
+
+<body>
+    Input Celcius (if input value
+    is less than -273, Celcius will be assigned as -273):<br>
+    <input type="number" id="celcius" value="25" />
+    <button type="button" onclick="convert()">Convert</button>
+    <div id="fresult"></div>
+    <div id="kresult"></div>
+
+    <script>
+        let minC = -273;
+
+        class Temperature {
+            constructor(c) {
+                if (c < minC) {
+                    this.c = minC;
+                } else {
+                    this.c = c;
+                }
+            }
+
+            str1() {
+                console.log('aaa')
+            }
+
+            toF() {
+                let result = (this.c * 1.8) + 32;
+                document.getElementById("fresult").innerHTML = `${this.c}°C  = ${result.toFixed(2)} °F`;
+            }
+
+            toK() {
+                let result = this.c + 273.15;
+                document.getElementById("kresult").innerHTML = `${this.c}°C  = ${result.toFixed(2)} °K`;
+            }
+        }
+
+        let c2 = new Temperature(25);
+        c2.toF();
+        c2.toK();
+
+        function convert() {
+            let c = parseFloat(document.getElementById("celcius").value);
+            let c1 = new Temperature(c);
+            console.log(c1);
+
+            c1.toF();
+            c1.toK();
+        }
+    </script>
+</body>
+
+</html>
