@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button type="button" onclick="turnFlashOn()">Turn on</button>
+    <button type="button" onclick="turnFlashOff()">Turn off</button>
+    <button type="button" onclick="onOffTenTimes()">On-Off 10 Times</button>
+    <br><br>
+    <div id="result" style="color: red;"></div>
+    <br>
+    <canvas id="myCanvas" width="480" height="280" style="border: 1px solid black;"></canvas>
+    <script>
+        class SwitchButton {
+            constructor() {
+
+            }
+
+            connectToLamp(electricLamp) {
+                this.electricLamp = electricLamp;
+            }
+
+            switchOff() {
+                this.electricLamp.turnOff();
+            }
+
+            switchOn() {
+                this.electricLamp.turnOn();
+            }
+        }
+
+        class ElectricLamp {
+            constructor() {
+                this.status = false;
+            }
+
+            turnOff() {
+                this.status = false;
+            }
+
+            turnOn() {
+                this.status = true;
+            }
+        }
+
+        let lamp = new ElectricLamp();
+        let switchButton = new SwitchButton();
+        switchButton.connectToLamp(lamp);
+        console.log(lamp.status);
+
+
+        let result = document.getElementById("result");
+        let c = document.getElementById("myCanvas");
+        let ctx = c.getContext("2d");
+        let imageObj = new Image();
+        imageObj.onload = function () {
+            ctx.drawImage(imageObj, 0, 0, 480, 280);
+        }
+        turnFlashOff();
+
+        function turnFlashOn() {
+            switchButton.switchOn();
+            imageObj.src = 'flashOn.png';
+            result.innerHTML = "FLASH ON";
+        }
+
+        function turnFlashOff() {
+            switchButton.switchOff();
+            imageObj.src = 'flashOff.png';
+            result.innerHTML = "FLASH OFF";
+        }
+
+        function onOffTenTimes() {
+            for (let i = 1000; i < 10001; i = i + 1000) {
+                console.log(i, i + 500)
+                setTimeout(turnFlashOn, i);
+                setTimeout(function () {
+                    result.innerHTML += ` ${i / 1000}`
+                }, i);
+                setTimeout(turnFlashOff, i + 500);
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -12,6 +12,10 @@
     <script>
         class MyDate {
             constructor(day, month, year) {
+                if (isNaN(Date.parse(`${day}/${month}/${year}`))) {
+                    return false;
+                }
+
                 this.day = day;
                 this.month = month;
                 this.year = year;

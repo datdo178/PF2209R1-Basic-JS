@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="display: flex; flex-direction: row;">
+        <div>
+            <table>
+                <tr>
+                    <td>Width</td>
+                    <td>
+                        <input type="number" id="width">
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>Height</td>
+                    <td>
+                        <input type="number" id="height">
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>Color</td>
+                    <td>
+                        <input type="text" id="color">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            Result:<br>
+            <textarea id="result" cols="30" rows="3"></textarea>
+        </div>
+    </div>
+    <button type="button" onclick="cal()">Calculate</button>
+    <button type="button" onclick="drawPic()">Draw</button>
+    <br>
+    <canvas id="myCanvas" width="400" height="200" style="border: 1px solid blue;"></canvas>
+    <div id="ketQua"></div>
+    <script>
+        class Rectangle {
+            constructor(width, height) {
+                this.width = width;
+                this.height = height;
+            }
+
+            getArea() {
+                return this.width * this.height;
+            }
+
+            getPerimeter() {
+                return 2 * (this.width + this.height);
+            }
+
+            setSize(width, height) {
+                this.width = width;
+                this.height = height;
+            }
+
+            draw(color) {
+                let c = document.getElementById("myCanvas");
+                let ctx = c.getContext("2d");
+
+                ctx.clearRect(0, 0, c.width, c.height);
+                ctx.lineWidth = 3;
+                ctx.strokeStyle = color;
+                ctx.strokeRect(10, 10, this.width, this.height);
+            }
+        }
+
+        function createRec() {
+            let width = document.getElementById("width").value;
+            let height = document.getElementById("height").value;
+            let rec = new Rectangle(width, height);
+
+            return rec;
+        }
+
+        function cal() {
+            let rec = createRec();
+            document.getElementById("result").value = `Area: ${rec.getArea()}\nPerimeter: ${rec.getPerimeter()}`;
+        }
+
+        function drawPic() {
+            let color = document.getElementById("color").value;
+            let rec = createRec();
+            rec.draw(color);
+        }
+    </script>
+</body>
+
+</html>

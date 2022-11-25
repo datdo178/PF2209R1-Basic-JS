@@ -25,3 +25,15 @@ Ngôn ngữ bậc cao:
 * OOP
 - Lấy đối tượng làm trung tâm
 - Tất cả các hành vi đều xoay quanh đối tượng
+
+
+-------------------------------------------
+đối tượng là 1 thể hiện cụ thể của lớp
+object is an instance of class
+An instance of a class is an object.
+thực thể - entity (database)
+UML
+encapsulation: tính đóng gói
+- : private
+#: protected (bảo vệ, dung trong lớp và lớp con)
++: public: công cộng

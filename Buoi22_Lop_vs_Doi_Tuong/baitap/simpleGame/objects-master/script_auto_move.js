@@ -2,40 +2,36 @@
  * Created by nhatnk on 4/26/17.
  */
 
-function Hero(image, top, left, size, speed) {
-  this.image = image;
-  this.top = top;
-  this.left = left;
-  this.size = size;
-  this.speed = speed;
+class Hero {
+  constructor(image, top, left, size, speed) {
+    this.image = image;
+    this.top = top;
+    this.left = left;
+    this.size = size;
+    this.speed = speed;
+  }
 
-  this.getHeroElement = function () {
+  getHeroElement() {
     return '<img width="' + this.size + '"' +
       ' height="' + this.size + '"' +
       ' src="' + this.image + '"' +
       ' style="top: ' + this.top + 'px; left:' + this.left + 'px;position:absolute;" />';
   }
 
-  this.move = function (direction) {
+  move(direction) {
     if (direction === 'right') {
       this.left += this.speed;
-    }
-
-    if (direction === 'left') {
+    } else if (direction === 'left') {
       this.left -= this.speed;
-    }
-
-    if (direction === 'up') {
+    } else if (direction === 'up') {
       this.top -= this.speed;
-    }
-
-    if (direction === 'down') {
+    } else if (direction === 'down') {
       this.top += this.speed;
     }
   }
 }
 
-var hero = new Hero('knight.png', 20, 30, 200, 50);
+let hero = new Hero('knight.png', 20, 30, 200, 50);
 
 function start() {
   let maxLeft = window.innerWidth - hero.size;
