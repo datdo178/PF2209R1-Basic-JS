@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="display: flex; flex-direction: row;">
+        <div>
+            X1: <input type="number" id="X1" value="10"><br>
+            Y1: <input type="number" id="Y1" value="10"><br>
+            W1: <input type="number" id="W1" value="100"><br>
+            H1: <input type="number" id="H1" value="50"><br>
+        </div>
+        <div>
+            -- <br>
+            -- <br>
+            -- <br>
+            -- <br>
+        </div>
+        <div>
+            X2: <input type="number" id="X2" value="120"><br>
+            Y2: <input type="number" id="Y2" value="120"><br>
+            W2: <input type="number" id="W2" value="150"><br>
+            H2: <input type="number" id="H2" value="75"><br>
+        </div>
+    </div>
+    <br>
+    <button type="button" onclick="drawRects()">Draw</button>
+    <button type="button" onclick="checkCollision()">Check Collision</button>
+    <br>
+    <div id="result"></div>
+    <canvas id="myCanvas" width="800" height="600" style="border: 1px solid black;"></canvas>
+
+    <script>
+        let c = document.getElementById("myCanvas")
+        let ctx = c.getContext("2d");
+
+        class Rect {
+            constructor(x, y, width, height) {
+                this.x = x;
+                this.y = y;
+                this.w = width;
+                this.h = height;
+            }
+
+            isCollision(rect2) {
+                let distX = Math.abs((this.x + (this.w / 2)) - (rect2.x + (rect2.w / 2)));
+
+                const distW = (this.w + rect2.w) / 2;
+
+                let distY = Math.abs((this.y + (this.h / 2)) - (rect2.y + (rect2.h / 2)));
+
+                const distH = (this.h + rect2.h) / 2;
+
+                return (distX <= distW && distY <= distH);
+            }
+
+            draw() {
+                ctx.strokeRect(this.x, this.y, this.w, this.h);
+            }
+        }
+
+        function drawRects() {
+            let x1 = parseInt(document.getElementById("X1").value);
+            let y1 = parseInt(document.getElementById("Y1").value);
+            let w1 = parseInt(document.getElementById("W1").value);
+            let h1 = parseInt(document.getElementById("H1").value);
+            let rect1 = new Rect(x1, y1, w1, h1);
+
+            let x2 = parseInt(document.getElementById("X2").value);
+            let y2 = parseInt(document.getElementById("Y2").value);
+            let w2 = parseInt(document.getElementById("W2").value);
+            let h2 = parseInt(document.getElementById("Y2").value);
+            let rect2 = new Rect(x2, y2, w2, h2);
+
+            ctx.clearRect(0, 0, c.width, c.height);
+            rect1.draw();
+            rect2.draw();
+        }
+
+        function checkCollision() {
+            let x1 = parseInt(document.getElementById("X1").value);
+            let y1 = parseInt(document.getElementById("Y1").value);
+            let w1 = parseInt(document.getElementById("W1").value);
+            let h1 = parseInt(document.getElementById("H1").value);
+            let rect1 = new Rect(x1, y1, w1, h1);
+
+            let x2 = parseInt(document.getElementById("X2").value);
+            let y2 = parseInt(document.getElementById("Y2").value);
+            let w2 = parseInt(document.getElementById("W2").value);
+            let h2 = parseInt(document.getElementById("Y2").value);
+            let rect2 = new Rect(x2, y2, w2, h2);
+
+            document.getElementById("result").innerHTML = `Collision: ${rect1.isCollision(rect2)}`;
+        }
+    </script>
+</body>
+
+</html>
