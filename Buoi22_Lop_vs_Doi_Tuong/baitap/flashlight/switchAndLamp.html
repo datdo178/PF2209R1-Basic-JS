@@ -52,8 +52,6 @@
         let lamp = new ElectricLamp();
         let switchButton = new SwitchButton();
         switchButton.connectToLamp(lamp);
-        console.log(lamp.status);
-
 
         let result = document.getElementById("result");
         let c = document.getElementById("myCanvas");
@@ -78,7 +76,6 @@
 
         function onOffTenTimes() {
             for (let i = 1000; i < 10001; i = i + 1000) {
-                console.log(i, i + 500)
                 setTimeout(turnFlashOn, i);
                 setTimeout(function () {
                     result.innerHTML += ` ${i / 1000}`
