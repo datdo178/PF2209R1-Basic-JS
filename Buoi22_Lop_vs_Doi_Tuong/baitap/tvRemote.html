@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Remote</title>
+    <style>
+        button {
+            width: 50px;
+            height: 50px;
+            margin: 5px 2px;
+        }
+
+        input {
+            width: 254px;
+            height: 25px;
+            margin: 8px;
+            text-align: right;
+            color: blue;
+        }
+
+        button {
+            background-color: white;
+            color: blue;
+            margin: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="600" height="400" style="border: 1px solid black;"></canvas>
+    <div style="width: 280px; height: 320px; border: 3px solid black">
+        <input id="remoteScreen" readonly size="32" /><br>
+        <button type="button" id="1" onclick="pressNumber(this.id)">1</button>
+        <button type="button" id="2" onclick="pressNumber(this.id)">2</button>
+        <button type="button" id="3" onclick="pressNumber(this.id)">3</button>
+        <button type="button" onclick="volume('up')">V+</button><br>
+        <button type="button" id="4" onclick="pressNumber(this.id)">4</button>
+        <button type="button" id="5" onclick="pressNumber(this.id)">5</button>
+        <button type="button" id="6" onclick="pressNumber(this.id)">6</button>
+        <button type="button" onclick="volume('down')">V-</button><br>
+        <button type="button" id="7" onclick="pressNumber(this.id)">7</button>
+        <button type="button" id="8" onclick="pressNumber(this.id)">8</button>
+        <button type="button" id="9" onclick="pressNumber(this.id)">9</button>
+        <button type="button" id="0" onclick="pressNumber(this.id)">0</button>
+        <button type="button" onclick="turn()">TURN</button>
+        <button type="button" onclick="changeChannel()" style="width: 180px">CHANGE CHANNEL</button>
+    </div>
+
+    <script>
+        class CanvasDraw {
+            constructor(id) {
+                this.c = document.getElementById(id);
+                this.ctx = this.c.getContext("2d");
+            }
+
+            turnOnTv(isTurnOn) {
+                this.ctx.font = "60px Times New Roman";
+
+                if (isTurnOn) {
+                    this.ctx.fillStyle = "white";
+                    this.ctx.fillRect(0, 0, this.c.width, this.c.height);
+
+                    this.ctx.fillStyle = "black";
+                    this.ctx.fillText("ON", 10, 70);
+                } else {
+                    this.ctx.fillStyle = "black";
+                    this.ctx.fillRect(0, 0, this.c.width, this.c.height);
+
+                    this.ctx.fillStyle = "white";
+                    this.ctx.fillText("OFF", 10, 70);
+                }
+            }
+
+            displayChannel(channelName) {
+                this.ctx.fillStyle = "white";
+                this.ctx.fillRect(100, 100, 400, 200);
+                this.ctx.font = "100 Arial";
+                this.ctx.fillStyle = "Orange";
+                this.ctx.fillText(channelName, 100, 200);
+            }
+
+            displayVolume(volume) {
+                this.ctx.fillStyle = "white";
+                this.ctx.fillRect(370, 290, 230, 200);
+                this.ctx.font = "60 Arial";
+                this.ctx.fillStyle = "green";
+                this.ctx.fillText(`Vol: ${volume}`, 370, 350);
+            }
+        }
+
+
+        let channels = [];
+        for (let i = 1; i < 101; i++) {
+            channels.push(`Channel ${i}`);
+        }
+        let canvas = new CanvasDraw("myCanvas");
+
+        class Remote {
+            constructor(tv) {
+                this.code = 1;
+                this.tv = tv;
+            }
+
+            switchOnOff() {
+                this.tv.switchOnOff();
+            }
+
+            changeChannel() {
+                let screenElm = document.getElementById("remoteScreen");
+
+                if (!this.tv.isOn) {
+                    screenElm.value = "";
+                    return;
+                }
+
+                let code = parseInt(screenElm.value);
+
+                if (isNaN(code) || code < 1 || code > 100) {
+                    screenElm.value = "";
+                    return;
+                }
+
+                this.code = code;
+                this.tv.changeChannel(this.code);
+                screenElm.value = "";
+            }
+
+            volumeUp() {
+                if (!this.tv.isOn) {
+                    return;
+                }
+                this.tv.adjustVolume(1);
+            }
+
+            volumeDown() {
+                if (!this.tv.isOn) {
+                    return;
+                }
+                this.tv.adjustVolume(-1);
+            }
+        }
+
+        class TV {
+            constructor() {
+                this.channel = channels[0];
+                this.volume = 99;
+                this.isOn = false;
+                canvas.turnOnTv(this.isOn);
+            }
+
+            switchOnOff() {
+                this.isOn = this.isOn ? false : true;
+                canvas.turnOnTv(this.isOn);
+                if (this.isOn) {
+                    canvas.displayChannel(this.channel);
+                    canvas.displayVolume(this.volume);
+                }
+            }
+
+            changeChannel(channelNumber) {
+                if (channelNumber > -1 && channelNumber < 100) {
+                    this.channel = channels[channelNumber - 1];
+                }
+                canvas.displayChannel(this.channel);
+            }
+
+            adjustVolume(gap) {
+                let max = 100, min = 0;
+                let isVolumeUpWhenMax = gap > 0 && this.volume === max;
+                let isVolumeDownWhenMin = gap < 0 && this.volume === min;
+                if (!isVolumeUpWhenMax && !isVolumeDownWhenMin) {
+                    this.volume += gap;
+                    canvas.displayVolume(this.volume);
+                }
+            }
+        }
+
+        let tv = new TV();
+        let remote = new Remote(tv);
+
+        function turn() {
+            remote.switchOnOff();
+        }
+        function pressNumber(num) {
+            document.getElementById("remoteScreen").value += num;
+        }
+
+        function changeChannel() {
+            remote.changeChannel();
+        }
+
+        function volume(option) {
+            if (option === 'up') {
+                remote.volumeUp();
+            } else {
+                remote.volumeDown();
+            }
+        }
+    </script>
+</body>
+
+</html>
