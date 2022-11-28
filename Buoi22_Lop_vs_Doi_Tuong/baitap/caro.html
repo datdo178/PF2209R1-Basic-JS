@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content=" width=device-width, initial-scale=1.0">
+    <title>Caro Game</title>
+    <style>
+        #result {
+            text-align: center;
+            color: red;
+            background-color: yellow;
+            font-weight: bolder;
+            font-size: larger;
+        }
+
+        #gameboard {
+            position: relative;
+            margin-top: 50px
+        }
+
+        .cell {
+            border: solid 1px black;
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bolder;
+            font-size: larger;
+        }
+
+        button {
+            border: 1px solid green;
+            border-radius: 4px;
+            height: 25px;
+            width: 80px;
+            background-color: chartreuse;
+            color: blueviolet;
+        }
+    </style>
+</head>
+
+<body>
+    <h4>Caro Game</h4>
+    Board size (Valid range [10-25]): <input type="number" id="boardSize" placeholder="Default: 20" max="25" min="10"
+        style="width: 100px">
+    <button type="button" onclick="changeSize()">Change</button>
+    <br>
+    Restart game: <button type="button" onclick="restart()">Restart</button>
+    <div id="result"></div>
+    <br>
+    <div id="gameboard">
+    </div>
+
+    <script>
+        class Cell {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+
+                let cell = document.createElement("div");
+                cell.setAttribute("class", `cell`);
+                cell.setAttribute("id", `cell-${x}-${y}`);
+                cell.setAttribute("onclick", `play(${x}, ${y})`);
+                cell.style = `left:${y * 40}px; top: ${x * 40}px;`
+                this.cellHtml = cell;
+            }
+
+            draw() {
+                document.getElementById("gameboard").appendChild(this.cellHtml);
+            }
+        }
+
+        class BoardGame {
+
+            constructor() {
+                this.board = [];
+                this.BOARD_SIZE = 20;
+                this.current_player = 'Y';
+                this.isOver = false;
+                this.initBoardValue();
+            }
+
+            initBoardValue() {
+                let board = [];
+
+                for (let x = 0; x < this.BOARD_SIZE; x++) {
+                    board.push([]);
+
+                    for (let y = 0; y < this.BOARD_SIZE; y++) {
+                        board[x].push(' ');
+                    }
+                }
+
+                this.board = board;
+                this.isOver = false;
+                document.getElementById("result").innerHTML = "";
+                document.getElementById("gameboard").innerHTML = "";
+
+                this.draw();
+            }
+
+            draw() {
+                for (let x = 0; x < this.BOARD_SIZE; x++) {
+                    for (let y = 0; y < this.BOARD_SIZE; y++) {
+                        let cell = new Cell(x, y);
+                        cell.draw();
+                    }
+                }
+            }
+
+            play(x, y) {
+                if (this.isOver) {
+                    return;
+                }
+
+                let cell = document.getElementById(`cell-${x}-${y}`);
+
+                let isCellEmpty = cell.innerHTML === "";
+                if (!isCellEmpty) {
+                    alert('This cell is alreay checked. Please select another empty cell!');
+                    return;
+                }
+
+                this.current_player = this.current_player === "X" ? "O" : "X";
+                cell.innerHTML = this.current_player;
+                this.board[x][y] = this.current_player;
+
+                if (this.current_player === "X") {
+                    cell.style.color = "red";
+                } else {
+                    cell.style.color = "green";
+                }
+            }
+
+            checkResult(x, y) {
+                let cell = document.getElementById(`cell-${x}-${y}`);
+                let winValue = cell.innerHTML === "X" ? "XXXXX" : "OOOOO";
+                let checkingValues = [],
+                    verticalValues = "",
+                    horizontalValues = "",
+                    crossValues1 = "",
+                    crossValues2 = "";
+
+                for (let i = - 4; i < 5; i++) {
+                    horizontalValues += this.board[x][y + i];
+
+                    if ((x + i) > -1 && (x + i) < this.BOARD_SIZE) {
+                        verticalValues += this.board[x + i][y];
+                        crossValues1 += this.board[x + i][y + i];
+                    }
+
+                    if ((x - i) > -1 && (x - i) < this.BOARD_SIZE) {
+                        crossValues2 += this.board[x - i][y + i];
+                    }
+                }
+
+                checkingValues.push(verticalValues.replaceAll(undefined, ''));
+                checkingValues.push(horizontalValues.replaceAll(undefined, ''));
+                checkingValues.push(crossValues1.replaceAll(undefined, ''));
+                checkingValues.push(crossValues2.replaceAll(undefined, ''));
+
+                for (let i = 0; i < 4; i++) {
+                    if (checkingValues[i].indexOf(winValue) !== -1) {
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+
+            informWinner(x, y) {
+                this.isOver = true;
+                let cell = document.getElementById(`cell-${x}-${y}`);
+                cell.style.backgroundColor = "yellow";
+                alert(`${cell.innerHTML} is Winner!`);
+                document.getElementById("result").innerHTML = `${cell.innerHTML} is Winner!`;
+            }
+        }
+
+        let board = new BoardGame();
+
+        function play(x, y) {
+            board.play(x, y);
+            let isWin = board.checkResult(x, y);
+            if (isWin) {
+                board.informWinner(x, y);
+            }
+        }
+
+        function restart() {
+            board.initBoardValue();
+        }
+
+        function changeSize() {
+            let size = parseInt(document.getElementById("boardSize").value);
+
+            if (isNaN(size) || size < 10 || size > 25) {
+                size = 20;
+            }
+
+            board.BOARD_SIZE = size;
+            board.initBoardValue();
+        }
+    </script>
+</body>
+
+</html>
