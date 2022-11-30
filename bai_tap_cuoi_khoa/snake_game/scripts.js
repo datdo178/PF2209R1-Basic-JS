@@ -1,7 +1,7 @@
 const PARAMS = {
     boardSize: 600,
     boardUnit: 20,
-    snakeSpeed: 200,
+    snakeSpeed: 100,
     isSnakeDead: false,
     currentScore: 0,
     bestScore: 0,
@@ -127,7 +127,6 @@ class GameBoard {
             x++;
         }
 
-
         ctx2.font = "20px Times New Roman";
         ctx2.fillStyle = "black";
         ctx2.fillText("Click on a color to change background!", c2.width / 5, c2.height / 3);
@@ -189,13 +188,14 @@ class Food {
     }
 
     spawn(snakeBody = []) {
-        let isOnSnakeBody = false;
+        let isOnSnakeBody;
         let x, y;
 
         do {
             x = Math.floor(Math.random() * PARAMS.boardSize / PARAMS.boardUnit);
             y = Math.floor(Math.random() * PARAMS.boardSize / PARAMS.boardUnit);
 
+            isOnSnakeBody = false;
             for (let i = 0; i < snakeBody.length; i++) {
                 if (x === snakeBody[i].x && y === snakeBody[i].y) {
                     isOnSnakeBody = true;
@@ -208,8 +208,8 @@ class Food {
     }
 
     update(snakeBody = []) {
-        this.piece = new Unit(...this.spawn());
-        this.draw(snakeBody);
+        this.piece = new Unit(...this.spawn(snakeBody));
+        this.draw();
     }
 
     draw() {
