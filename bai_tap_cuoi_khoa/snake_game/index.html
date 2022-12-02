@@ -15,16 +15,16 @@
     </style>
 </head>
 
-<body onload="initGame()" onkeydown="play(event)">
+<body onload="initGame()" onkeydown="play(event)" style="text-align: center;">
     <h1 style="color:darkgoldenrod">~ SNAKE GAME ~</h1>
     <div id="bestScore"></div>
     <div id="currentScore"></div>
     <canvas id="gameboard"></canvas>
     <br>
     <canvas id="gamesetting">
-        <button>Click</button>
     </canvas>
 
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./scripts.js"></script>
 </body>
 

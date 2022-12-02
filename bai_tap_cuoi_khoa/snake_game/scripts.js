@@ -79,14 +79,19 @@ c2.addEventListener('click', function (e) {
     const themeKeys = Object.keys(THEME);
     const selectedThemeIndex = parseInt(clickedX * themeKeys.length / c2.width);
 
-    if (!PARAMS.isSnakeDead) {
-
-    }
-    const isRestart = confirm("Change background and restart game?");
-    if (isRestart) {
-        selectedTheme = THEME[themeKeys[selectedThemeIndex]];
-        initGame();
-    }
+    Swal.fire({
+        title: 'Change background?',
+        text: "Game will be restarted.",
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Change'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            selectedTheme = THEME[themeKeys[selectedThemeIndex]];
+            initGame();
+        }
+    })
 })
 
 class GameBoard {
@@ -384,5 +389,6 @@ References:
 - Snake game: https://www.youtube.com/watch?v=5uMEYUpJbMI&t=1282s
 - Canvas Object Interaction Events: https://www.youtube.com/watch?v=xbdJf9MRL7A
 - HTML CSS COLOR CODE: https://www.htmlcsscolor.com/
-- Icon/images: https://iconscout.com/; https://pngtree.com/
+- Icons/images: https://iconscout.com/; https://pngtree.com/
+- Swertalert2: https://sweetalert2.github.io/
 */
