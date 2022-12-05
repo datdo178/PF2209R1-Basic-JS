@@ -158,7 +158,7 @@ class Unit {
                     PARAMS.boardUnit, PARAMS.boardUnit
                 );
             };
-            imageObj.src = 'food.png';
+            imageObj.src = 'images/food.png';
         } else if (name === "head") {
             let imageObj = new Image();
             imageObj.onload = function () {
@@ -169,7 +169,7 @@ class Unit {
                     PARAMS.boardUnit, PARAMS.boardUnit
                 );
             };
-            imageObj.src = 'snake_head.png';
+            imageObj.src = 'images/snake_head.png';
         } else {
             ctx.fillStyle = selectedTheme.snake;
             ctx.roundRect(
@@ -188,7 +188,6 @@ class Unit {
 class Food {
     constructor(x, y) {
         this.piece = new Unit(...this.spawn());
-        this.isSpecical = false;
         this.draw();
     }
 
@@ -229,7 +228,7 @@ class Snake {
             new Unit(14, 15),
             new Unit(13, 15)
         ]
-        this.direct = {
+        this.directUpdate = {
             x: {
                 ArrowLeft: -1,
                 ArrowUp: 0,
@@ -262,8 +261,8 @@ class Snake {
     }
 
     move(direct) {
-        let newX = this.head.x + this.direct.x[direct];
-        let newY = this.head.y + this.direct.y[direct];
+        let newX = this.head.x + this.directUpdate.x[direct];
+        let newY = this.head.y + this.directUpdate.y[direct];
         let newCell = new Unit(newX, newY);
 
         this.body.unshift(newCell);
@@ -313,7 +312,7 @@ class Snake {
                     PARAMS.boardSize
                 );
             };
-            imageObj.src = 'game_over.png';
+            imageObj.src = 'images/game_over.png';
             PARAMS.isSnakeDead = true;
         }
     }
@@ -381,7 +380,9 @@ function play(e) {
 - Compare the time between 2 onkeypress events. If the different is less than snake speed then ignore the event.
 
 4. (RESOLVED) How to make user press anykey to start moving
-- Change to press any arrow keys
+- Change to press any arrow keys:
+    + use if to check the keycode
+    + only accept arrow keycodes --> let the snake moves right if the keycode is valid
 */
 
 /*
